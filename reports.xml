@@ -1,27 +1,21 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<openerp>
-	<data>
-		<report 
-			id="contract_abakus"
-			string="Contract"
-			model="account.analytic.account" 
-			report_type="qweb-pdf"
-			file="contract_report" 
-			name="contract_report.report_contract"
-		/>
-       
-		<template id="report_contract_document">
+<?xml version="1.0"?>
+<t t-name="contract_report.report_contract_document">
             <t t-call="report.external_layout">
                 <div class="page">
                     <style type="text/css">
-                        .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+                        /*
+.table-striped &gt; tbody &gt; tr:nth-child(2n+1) &gt; td, .table-striped &gt; tbody &gt; tr:nth-child(2n+1) &gt; th {
                             background-color: #FDD7BD;
                         }
-                        .total{
-                            background-color: #E97B2E;
+*/
+                        .abakusBordered {
+                            border: 2px #F68B19 solid;
+                            background-color: #F9F9F9;
                         }
-                        .subtotal{
-                            background-color: #FF9B56;
+
+                        .abakusBackground {
+                            background-color: #F68B19;
+                            color: #F9F9F9;
                         }
                     </style>
                     <div class="row">
@@ -31,9 +25,11 @@
                             <span t-field="o.partner_id.vat"/>
                         </div>
                     </div>
-                    <h1 class="text-center">SERVICE REPORT</h1>
+
+                    <h1 class="text-center">Support Contract<br />Timesheet Report</h1>
+
                     <!-- contract details -->
-                    <table class="table table-bordered">
+                    <table class="table abakusBordered">
                         <tr>
                             <th>Contract</th>
                             <td><span t-field="o.name"/></td>
@@ -51,14 +47,16 @@
                             <td><span t-esc="o.get_report_interval(o.date_start)"/></td><!-- time.strftime('%d.%m.%Y') -->
                         </tr>
                     </table>
+
+                    <h2>Service delivery</h2>
+
                     <!-- analytic line details -->
                     <table class="table table-condensed table-striped">
-                        <caption>Service delivery</caption>
-                        <tr>
+                        <tr class="abakusBordered">
                             <th>Date</th>
                             <th>Description</th>
                             <th style="width: 130px;">User</th>
-                            <th>On site</th>
+                            <th>Kind</th>
                             <th>Quantity</th>
                             <th style="width: 90px;">Amount</th>
                         </tr>
@@ -73,7 +71,14 @@
                                     </td>
                                     <td><span t-field="line.name"/></td>
                                     <td><span t-field="line.user_id.name"/></td>
-                                    <td><span t-field="line.on_site"/></td>
+                                    <td>
+                                        <t t-if="line.on_site">
+                                            OS
+                                        </t>
+                                        <t t-if="line.on_site==False">
+                                            SD
+                                        </t>
+                                    </td>
                                     <td><span t-esc="o.decimal_to_hours(line.unit_amount)"/></td>
                                     <t t-if="price &lt;= 0 and price != line.product_id.lst_price">
                                         <t t-set="price" t-value="line.product_id.lst_price"/>
@@ -87,15 +92,16 @@
                         </t>        
                     </table>
                     <table class="table">
-                        <tr class="subtotal">
+                        <tr class="abakusBordered">
                             <th>Service delivery total</th>
                             <th class="text-right"><span t-esc="service_delivery_total"/> €</th>
                         </tr>
                     </table>
-                    
+
+                    <h2>Prepaid instalment</h2>
+
                     <table class="table table-condensed table-striped">
-                        <caption>Prepaid instalment</caption>
-                        <tr>
+                        <tr class="abakusBordered">
                             <th>Date</th>
                             <th>Description</th>
                             <th>Reference</th>
@@ -117,26 +123,26 @@
                         </t>        
                     </table>
                     <table class="table">
-                        <tr class="subtotal">
+                        <tr class="abakusBordered">
                             <th>Prepaid instalment total</th>
                             <th class="text-right"><span t-esc="prepaid_instalment_total"/> €</th>
                         </tr>
                     </table>
-                    <table class="table">
+                    <table class="table abakusBackground">
                         <caption>Summary</caption>
-                        <tr class="total">
+                        <tr class="">
                             <th>Working hours total</th>
                             <td class="text-right"><span t-esc="o.decimal_to_hours(working_hours_total)"/></td>
                         </tr>
-                        <tr class="total">
+                        <tr class="">
                             <th>Service delivery total</th>
                             <td class="text-right"><span t-esc="service_delivery_total"/> €</td>
                         </tr>
-                        <tr class="total">
+                        <tr class="">
                             <th>Prepaid instalment total</th>
                             <td class="text-right"><span t-esc="prepaid_instalment_total"/> €</td>
                         </tr>
-                        <tr class="total">
+                        <tr class="">
                             <th>Balance</th>
                             <t t-set="balance" t-value="prepaid_instalment_total - service_delivery_total"/>
                             <th class="text-right"><span t-esc="balance"/> €</th>
@@ -148,14 +154,6 @@
                     -->
                 </div>
             </t>
-        </template>
+        </t>
         
-        <template id="report_contract">
-            <t t-call="report.html_container">
-                <t t-foreach="doc_ids" t-as="doc_id">
-                    <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'contract_report.report_contract_document')"/>
-                </t>
-            </t>
-        </template>
-    </data>
-</openerp>
+        
