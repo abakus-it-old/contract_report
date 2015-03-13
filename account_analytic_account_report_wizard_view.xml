@@ -6,7 +6,7 @@
             <field name="model">contract.report.wizard</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
-                <form string="Contract Report">
+                <form string="Contract Report Settings">
                     <group >
                         <field name="start_date"/>
                         <field name="end_date"/>
@@ -22,7 +22,7 @@
         </record>
         
         <record id="action_contract_report_wizard" model="ir.actions.act_window">
-            <field name="name">Contract Report</field>
+            <field name="name">Contract Report Settings</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">contract.report.wizard</field>
             <field name="view_type">form</field>
