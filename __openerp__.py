@@ -17,5 +17,6 @@ This module has been developed by Bernard Delhez, intern @ AbAKUS it-solutions, 
         'reports.xml',
         'account_analytic_account_report_wizard_view.xml',
         'contract_report.xml',
+        'security/ir.model.access.csv',
     ],
 }
