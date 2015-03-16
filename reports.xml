@@ -3,7 +3,7 @@
 	<data>
 		<report 
 			id="contract_abakus"
-			string="Contract"
+			string="Contract Timesheet Report"
 			model="account.analytic.account" 
 			report_type="qweb-pdf"
 			file="contract_report" 
