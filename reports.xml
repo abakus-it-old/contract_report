@@ -1,159 +1,183 @@
 <?xml version="1.0"?>
-<t t-name="contract_report.report_contract_document">
-            <t t-call="report.external_layout">
-                <div class="page">
-                    <style type="text/css">
-                        /*
-.table-striped &gt; tbody &gt; tr:nth-child(2n+1) &gt; td, .table-striped &gt; tbody &gt; tr:nth-child(2n+1) &gt; th {
-                            background-color: #FDD7BD;
-                        }
-*/
-                        .abakusBordered {
-                            border: 2px #F68B19 solid;
-                            background-color: #F9F9F9;
-                        }
+<openerp>
+	<data>
+		<report 
+			id="contract_abakus"
+			string="Contract"
+			model="account.analytic.account" 
+			report_type="qweb-pdf"
+			file="contract_report" 
+			name="contract_report.report_contract"
+		/>
+       
+		<template id="report_contract_document">
+			<t t-name="contract_report.report_contract_document">
+				<t t-call="report.external_layout">
+					<div class="page">
+						<style type="text/css">
+							/*
+								.table-striped &gt; tbody &gt; tr:nth-child(2n+1) &gt; td, .table-striped &gt; tbody &gt; tr:nth-child(2n+1) &gt; th {
+									background-color: #FDD7BD;
+								}
+		*/
+								.abakusBordered {
+									border: 2px #F68B19 solid;
+									background-color: #F9F9F9;
+								}
 
-                        .abakusBackground {
-                            background-color: #F68B19;
-                            color: #F9F9F9;
-                        }
-                    </style>
-                    <div class="row">
-                        <div class="col-xs-5 col-xs-offset-7">
-                            <strong><span t-field="o.partner_id"/></strong>
-                            <address t-field="o.partner_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;], &quot;no_marker&quot;: true}"/>
-                            <span t-field="o.partner_id.vat"/>
-                        </div>
-                    </div>
+								.abakusBackground {
+									background-color: #F68B19;
+									color: #F9F9F9;
+								}
+						</style>
+						<div class="row">
+							<div class="col-xs-5 col-xs-offset-7">
+								<strong><span t-field="o.partner_id"/></strong>
+								<address t-field="o.partner_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;], &quot;no_marker&quot;: true}"/>
+								<span t-field="o.partner_id.vat"/>
+							</div>
+						</div>
 
-                    <h1 class="text-center">Support Contract<br />Timesheet Report</h1>
+						<h1 class="text-center">Support Contract<br />Timesheet Report</h1>
 
-                    <!-- contract details -->
-                    <table class="table abakusBordered">
-                        <tr>
-                            <th>Contract</th>
-                            <td><span t-field="o.name"/></td>
-                        </tr>
-                        <tr>
-                            <th>Custommer</th>
-                            <td><span t-field="o.partner_id.name"/></td>
-                        </tr>
-                        <tr>
-                            <th>Prepaid units</th>
-                            <td><span t-esc="o.decimal_to_hours(o.quantity_max)"/></td>
-                        </tr>
-                        <tr>
-                            <th>Report Date</th>
-                            <td><span t-esc="o.get_report_interval(o.date_start)"/></td><!-- time.strftime('%d.%m.%Y') -->
-                        </tr>
-                    </table>
+						<!-- contract details -->
+						<table class="table abakusBordered">
+							<tr>
+								<th>Contract</th>
+								<td><span t-field="o.name"/></td>
+							</tr>
+							<tr>
+								<th>Custommer</th>
+								<td><span t-field="o.partner_id.name"/></td>
+							</tr>
+							<tr>
+								<th>Prepaid units</th>
+								<td><span t-esc="o.decimal_to_hours(o.quantity_max)"/></td>
+							</tr>
+							<tr>
+								<th>Report Date</th>
+								<td><span t-esc="o.get_report_interval(o.date_start)"/></td><!-- time.strftime('%d.%m.%Y') -->
+							</tr>
+						</table>
 
-                    <h2>Service delivery</h2>
+						<h2>Service delivery</h2>
 
-                    <!-- analytic line details -->
-                    <table class="table table-condensed table-striped">
-                        <tr class="abakusBordered">
-                            <th>Date</th>
-                            <th>Description</th>
-                            <th style="width: 130px;">User</th>
-                            <th>Kind</th>
-                            <th>Quantity</th>
-                            <th style="width: 90px;">Amount</th>
-                        </tr>
-                        <t t-set="service_delivery_total" t-value="0"/>
-                        <t t-set="working_hours_total" t-value="0"/>
-                        <t t-set="price" t-value="o.timesheet_product_price"/>
-                        <t t-foreach="o.line_ids" t-as="line">
-                            <t t-if="not line.ref and o.check_start_end_line_date(line.date)">
-                                <tr>
-                                    <td>
-                                        <span t-field="line.date" t-field-options="{&quot;format&quot;: &quot;dd.MM.YYYY&quot;}"/>
-                                    </td>
-                                    <td><span t-field="line.name"/></td>
-                                    <td><span t-field="line.user_id.name"/></td>
-                                    <td>
-                                        <t t-if="line.on_site">
-                                            OS
-                                        </t>
-                                        <t t-if="line.on_site==False">
-                                            SD
-                                        </t>
-                                    </td>
-                                    <td><span t-esc="o.decimal_to_hours(line.unit_amount)"/></td>
-                                    <t t-if="price &lt;= 0 and price != line.product_id.lst_price">
-                                        <t t-set="price" t-value="line.product_id.lst_price"/>
-                                    </t>
-                                    <t t-set="computed_amount" t-value="price * line.unit_amount"/>
-                                    <td><span t-esc="computed_amount"/> €</td>
-                                </tr>
-                                <t t-set="service_delivery_total" t-value="service_delivery_total + computed_amount"/>
-                                <t t-set="working_hours_total" t-value="working_hours_total + line.unit_amount"/>
-                            </t>
-                        </t>        
-                    </table>
-                    <table class="table">
-                        <tr class="abakusBordered">
-                            <th>Service delivery total</th>
-                            <th class="text-right"><span t-esc="service_delivery_total"/> €</th>
-                        </tr>
-                    </table>
+						<!-- analytic line details -->
+						<table class="table table-condensed table-striped">
+							<tr class="abakusBordered">
+								<th>Date</th>
+								<th>Description</th>
+								<th style="width: 130px;">User</th>
+								<th>Kind</th>
+								<th>Quantity</th>
+								<th style="width: 90px;">Amount</th>
+							</tr>
+							<t t-set="service_delivery_total" t-value="0"/>
+							<t t-set="working_hours_total" t-value="0"/>
+							<t t-set="price" t-value="o.timesheet_product_price"/>
+							<t t-foreach="o.line_ids" t-as="line">
+								<t t-if="not line.ref and o.check_start_end_line_date(line.date)">
+									<tr>
+										<td>
+											<span t-field="line.date" t-field-options="{&quot;format&quot;: &quot;dd.MM.YYYY&quot;}"/>
+										</td>
+										<td><span t-field="line.name"/></td>
+				                        <td><span t-field="line.user_id.name"/></td>
+				                        <td>
+				                        	<t t-if="line.on_site">
+				                        		OS
+				                        	</t>
+				                        	<t t-if="line.on_site==False">
+				                        		SD
+				                        	</t>
+										</td>
+				                        <td><span t-esc="o.decimal_to_hours(line.unit_amount)"/></td>
+				                        <t t-if="price &lt;= 0 and price != line.product_id.lst_price">
+				                            <t t-set="price" t-value="line.product_id.lst_price"/>
+				                        </t>
+				                        <t t-set="computed_amount" t-value="price * line.unit_amount"/>
+				                        <td><span t-esc="computed_amount"/> €</td>
+				                    </tr>
+				                    <t t-set="service_delivery_total" t-value="service_delivery_total + computed_amount"/>
+				                    <t t-set="working_hours_total" t-value="working_hours_total + line.unit_amount"/>
+				                </t>
+				            </t>        
+				        </table>
+				        <table class="table">
+				            <tr class="abakusBordered">
+				                <th>Service delivery total</th>
+				                <th class="text-right"><span t-esc="service_delivery_total"/> €</th>
+				            </tr>
+				        </table>
 
-                    <h2>Prepaid instalment</h2>
+				        <h2>Prepaid instalment</h2>
 
-                    <table class="table table-condensed table-striped">
-                        <tr class="abakusBordered">
-                            <th>Date</th>
-                            <th>Description</th>
-                            <th>Reference</th>
-                            <th style="width: 90px;">Amount</th>
-                        </tr>
-                        <t t-set="prepaid_instalment_total" t-value="0"/>
-                        <t t-foreach="o.line_ids" t-as="line">
-                            <t t-if="line.ref and o.check_start_end_line_date(line.date)">
-                                <tr>
-                                    <td>
-                                        <span t-field="line.date" t-field-options="{&quot;format&quot;: &quot;dd.MM.YYYY&quot;}"/>
-                                    </td>
-                                    <td><span t-field="line.name"/></td>
-                                    <td><span t-field="line.ref"/></td>
-                                    <td><span t-field="line.amount"/> €</td>
-                                </tr>
-                                <t t-set="prepaid_instalment_total" t-value="prepaid_instalment_total + line.amount"/>
-                            </t>
-                        </t>        
-                    </table>
-                    <table class="table">
-                        <tr class="abakusBordered">
-                            <th>Prepaid instalment total</th>
-                            <th class="text-right"><span t-esc="prepaid_instalment_total"/> €</th>
-                        </tr>
-                    </table>
-                    <table class="table abakusBackground">
-                        <caption>Summary</caption>
-                        <tr class="">
-                            <th>Working hours total</th>
-                            <td class="text-right"><span t-esc="o.decimal_to_hours(working_hours_total)"/></td>
-                        </tr>
-                        <tr class="">
-                            <th>Service delivery total</th>
-                            <td class="text-right"><span t-esc="service_delivery_total"/> €</td>
-                        </tr>
-                        <tr class="">
-                            <th>Prepaid instalment total</th>
-                            <td class="text-right"><span t-esc="prepaid_instalment_total"/> €</td>
-                        </tr>
-                        <tr class="">
-                            <th>Balance</th>
-                            <t t-set="balance" t-value="prepaid_instalment_total - service_delivery_total"/>
-                            <th class="text-right"><span t-esc="balance"/> €</th>
-                        </tr>
-                    </table>  
-                    <!--
-                    <p style="page-break-after:always;"></p>
-                    <h1 class="text-center text-uppercase">SLA</h1>
-                    -->
-                </div>
+				        <table class="table table-condensed table-striped">
+				            <tr class="abakusBordered">
+				                <th>Date</th>
+				                <th>Description</th>
+				                <th>Reference</th>
+				                <th style="width: 90px;">Amount</th>
+				            </tr>
+				            <t t-set="prepaid_instalment_total" t-value="0"/>
+				            <t t-foreach="o.line_ids" t-as="line">
+				                <t t-if="line.ref and o.check_start_end_line_date(line.date)">
+				                    <tr>
+				                        <td>
+				                            <span t-field="line.date" t-field-options="{&quot;format&quot;: &quot;dd.MM.YYYY&quot;}"/>
+				                        </td>
+				                        <td><span t-field="line.name"/></td>
+				                        <td><span t-field="line.ref"/></td>
+				                        <td><span t-field="line.amount"/> €</td>
+				                    </tr>
+				                    <t t-set="prepaid_instalment_total" t-value="prepaid_instalment_total + line.amount"/>
+				                </t>
+				            </t>        
+				        </table>
+				        <table class="table">
+				            <tr class="abakusBordered">
+				                <th>Prepaid instalment total</th>
+				                <th class="text-right"><span t-esc="prepaid_instalment_total"/> €</th>
+				            </tr>
+				        </table>
+
+						<h2>Summary</h2>
+
+				        <table class="table abakusBackground">
+					        <tr class="">
+				                <th>Working hours total</th>
+				                <td class="text-right"><span t-esc="o.decimal_to_hours(working_hours_total)"/></td>
+				            </tr>
+				            <tr class="">
+				                <th>Service delivery total</th>
+				                <td class="text-right"><span t-esc="service_delivery_total"/> €</td>
+				            </tr>
+				            <tr class="">
+				                <th>Prepaid instalment total</th>
+				                <td class="text-right"><span t-esc="prepaid_instalment_total"/> €</td>
+				            </tr>
+				            <tr class="">
+				                <th>Balance</th>
+				                <t t-set="balance" t-value="prepaid_instalment_total - service_delivery_total"/>
+				                <th class="text-right"><span t-esc="balance"/> €</th>
+				            </tr>
+				        </table>  
+				        <!--
+					        <p style="page-break-after:always;"></p>
+				            <h1 class="text-center text-uppercase">SLA</h1>
+				        -->
+				    </div>
+				</t>
+			</t>
+		</template>
+       
+        <template id="report_contract">
+            <t t-call="report.html_container">
+                <t t-foreach="doc_ids" t-as="doc_id">
+                    <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'contract_report.report_contract_document')"/>
+                </t>
             </t>
-        </t>
-        
-        
+        </template>
+    </data>
+</openerp>
+
