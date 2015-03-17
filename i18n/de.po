@@ -1,0 +1,220 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* contract_report
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0-20150209\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-03-17 10:03+0000\n"
+"PO-Revision-Date: 2015-03-17 10:03+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: contract_report
+#: field:contract.report,active:0
+#: field:contract.report.wizard,active:0
+msgid "Active"
+msgstr "Active"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Amount"
+msgstr "Total"
+
+#. module: contract_report
+#: model:ir.model,name:contract_report.model_account_analytic_account
+msgid "Analytic Account"
+msgstr "Kostenstellenkonto"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Balance"
+msgstr "Saldo"
+
+#. module: contract_report
+#: view:contract.report.wizard:contract_report.view_contract_report_wizard
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Contract"
+msgstr "Vertrag"
+
+#. module: contract_report
+#: model:ir.actions.act_window,name:contract_report.action_contract_report_wizard
+#: model:ir.ui.menu,name:contract_report.contract_report_menu
+msgid "Contract Report"
+msgstr "Contract Report"
+
+#. module: contract_report
+#: view:contract.report.wizard:contract_report.view_contract_report_wizard
+msgid "Contract Report Settings"
+msgstr "Contract Report Einstellungen"
+
+#. module: contract_report
+#: model:ir.actions.report.xml,name:contract_report.contract_abakus
+msgid "Contract Timesheet Report"
+msgstr "Contract Timesheet Report"
+
+#. module: contract_report
+#: field:contract.report,create_uid:0
+#: field:contract.report.wizard,create_uid:0
+msgid "Created by"
+msgstr "Created by"
+
+#. module: contract_report
+#: field:contract.report,create_date:0
+#: field:contract.report.wizard,create_date:0
+msgid "Created on"
+msgstr "Created on"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Custommer"
+msgstr "Kunde"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Date"
+msgstr "Datum"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Description"
+msgstr "Beschreibung"
+
+#. module: contract_report
+#: field:contract.report,end_date:0
+#: field:contract.report.wizard,end_date:0
+msgid "End date"
+msgstr "Enddatum"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "H (Unit price:"
+msgstr "H (Stundensatz:"
+
+#. module: contract_report
+#: field:contract.report,id:0
+#: field:contract.report.wizard,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "In our favour"
+msgstr "Zu Unserem Gunsten"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "In your favour"
+msgstr "Zu Ihrem Gusten"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Kind"
+msgstr "Art"
+
+#. module: contract_report
+#: field:contract.report,write_uid:0
+#: field:contract.report.wizard,write_uid:0
+msgid "Last Updated by"
+msgstr "Last Updated by"
+
+#. module: contract_report
+#: field:contract.report,write_date:0
+#: field:contract.report.wizard,write_date:0
+msgid "Last Updated on"
+msgstr "Last Updated on"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "On site support"
+msgstr "Anfahrten"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Period"
+msgstr "Periode"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Prepaid instalment"
+msgstr "Anzahlungen"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Prepaid instalment total"
+msgstr "Anzahlungen Total"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Prepaid units"
+msgstr "Vertragliche Mindestleistung"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Quantity"
+msgstr "Menge"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Reference"
+msgstr "Referenz"
+
+#. module: contract_report
+#: view:contract.report.wizard:contract_report.view_contract_report_wizard
+msgid "Save"
+msgstr "Speichern"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Service delivery"
+msgstr "Dienstleistungen"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Service delivery total"
+msgstr "Dienstleistungen Total"
+
+#. module: contract_report
+#: field:contract.report,start_date:0
+#: field:contract.report.wizard,start_date:0
+msgid "Start date"
+msgstr "Anfangsdatum"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Summary"
+msgstr "Zusammenfassung"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Support Contract"
+msgstr "Supportleistungen, Stundennachweis"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Timesheet Report"
+msgstr "und Anzahlungen"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "User"
+msgstr "Support"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Working hours"
+msgstr "Geleistete Arbeitszeit"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "€, On site price:"
+msgstr "€, Anfahrtskosten:"
