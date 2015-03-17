@@ -64,3 +64,6 @@ class account_analytic_account_report_methods(models.Model):
                 return default_date_string
         else:
             return default_date_string
+    
+    def format_date(self, a_date):
+        return datetime.datetime.strptime(a_date, "%Y-%m-%d").date().strftime('%d-%m-%Y')
