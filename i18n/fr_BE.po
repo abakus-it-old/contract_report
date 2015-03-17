@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0-20150316\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-17 10:55+0000\n"
-"PO-Revision-Date: 2015-03-17 10:55+0000\n"
+"POT-Creation-Date: 2015-03-17 13:36+0000\n"
+"PO-Revision-Date: 2015-03-17 13:36+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -82,7 +82,7 @@ msgstr "Client"
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "Date"
-msgstr "Date"
+msgstr "Date du rapport"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -141,22 +141,22 @@ msgstr "Support sur site"
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "Period"
-msgstr "Période"
+msgstr "Période couverte par le rapport"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "Prepaid instalment"
-msgstr "Acompte prépayé"
+msgstr "Acomptes prépayés"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "Prepaid instalment total"
-msgstr "Acompte prépayé total"
+msgstr "Sous-total pour les acomptes payés"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "Prepaid units"
-msgstr "Heures prépayées"
+msgstr "Nombre d'unités contractuelles minimum"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -181,7 +181,7 @@ msgstr "Service presté"
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "Service delivery total"
-msgstr "Service total presté"
+msgstr "Sous-total pour le service presté"
 
 #. module: contract_report
 #: field:contract.report,start_date:0
@@ -196,18 +196,13 @@ msgstr "Résumé"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
-msgid "Support Contract"
-msgstr "Contrat de Support"
-
-#. module: contract_report
-#: view:website:contract_report.report_contract_document
-msgid "Timesheet Report"
-msgstr "Rapport de Prestation de service"
+msgid "Timesheet and Instalment Report"
+msgstr "Compte rendu des prestations de services et acomptes"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "User"
-msgstr "Utilisateur"
+msgstr "Prestataire"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
