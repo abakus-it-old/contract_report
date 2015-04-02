@@ -40,14 +40,17 @@ class account_analytic_account_report_methods(models.Model):
         else:
             return True
         
-    def get_report_interval(self, contract_date_start):
+    def get_report_interval(self, contract_date_start, contract_date_end):
         cr = self.env.cr
         uid = self.env.user.id
         contract_report_obj = self.pool.get('contract.report')
         contract_report_id = contract_report_obj.search(cr, uid, [('id','=',1)])
         if not contract_date_start:
             contract_date_start = datetime.datetime.strptime("1980-01-01", "%Y-%m-%d").date()
-        default_date_string = datetime.datetime.strptime(contract_date_start, "%Y-%m-%d").date().strftime('%d-%m-%Y')+" - "+date.today().strftime('%d-%m-%Y')
+        if not contract_date_end:
+            local_tz = timezone('Europe/Brussels')
+            contract_date_end = datetime.datetime.now(local_tz).date()
+        default_date_string = datetime.datetime.strptime(contract_date_start, "%Y-%m-%d").date().strftime('%d-%m-%Y')+" - "+datetime.datetime.strptime(contract_date_end, "%Y-%m-%d").date().strftime('%d-%m-%Y')
         if contract_report_id:
             contract_report = contract_report_obj.browse(cr, uid, contract_report_id[0])
             if not contract_report.start_date:
@@ -55,7 +58,10 @@ class account_analytic_account_report_methods(models.Model):
             else:
                 start_date = datetime.datetime.strptime(contract_report.start_date, "%Y-%m-%d").date()
             if not contract_report.end_date:
-                end_date = date.today()
+                if date.today() <= datetime.datetime.strptime(contract_date_end, "%Y-%m-%d").date():
+                    end_date = date.today()
+                else:
+                    end_date = datetime.datetime.strptime(contract_date_end, "%Y-%m-%d").date()
             else:
                 end_date = datetime.datetime.strptime(contract_report.end_date, "%Y-%m-%d").date()
             return start_date.strftime('%d-%m-%Y')+" - "+end_date.strftime('%d-%m-%Y')

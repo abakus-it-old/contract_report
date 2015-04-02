@@ -55,7 +55,7 @@
 							</tr>
 							<tr>
 								<th>Period</th>
-								<td><span t-esc="o.get_report_interval(o.date_start)"/></td>
+								<td><span t-esc="o.get_report_interval(o.date_start,o.date)"/></td>
 							</tr>
 							<tr>
 								<th>Date</th>
@@ -88,7 +88,7 @@
 										<td><span t-field="line.name"/></td>
 				                        <td><span t-field="line.user_id.name"/></td>
 				                        <td>
-				                        	<t t-if="line.on_site">
+				                        	<t t-if="line.on_site==True">
 				                        	    <t t-set="computed_amount" t-value="o.on_site_product.lst_price"/>
 				                        	    <t t-set="on_site_total" t-value="on_site_total + 1"/>	
 				                           		OS
