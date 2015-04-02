@@ -23,7 +23,7 @@ class account_analytic_account_report_methods(models.Model):
         contract_report_id = contract_report_obj.search(cr, uid, [('id','=',1)])
         if contract_report_id:
             contract_report = contract_report_obj.browse(cr, uid, contract_report_id[0])
-            if contract_report and contract_report.active:
+            if contract_report:
                 if not contract_report.start_date:
                     start_date = datetime.datetime.strptime("1980-01-01", "%Y-%m-%d").date()
                 else:
@@ -50,18 +50,15 @@ class account_analytic_account_report_methods(models.Model):
         default_date_string = datetime.datetime.strptime(contract_date_start, "%Y-%m-%d").date().strftime('%d-%m-%Y')+" - "+date.today().strftime('%d-%m-%Y')
         if contract_report_id:
             contract_report = contract_report_obj.browse(cr, uid, contract_report_id[0])
-            if contract_report.active:
-                if not contract_report.start_date:
-                    start_date = datetime.datetime.strptime(contract_date_start, "%Y-%m-%d").date()
-                else:
-                    start_date = datetime.datetime.strptime(contract_report.start_date, "%Y-%m-%d").date()
-                if not contract_report.end_date:
-                    end_date = date.today()
-                else:
-                    end_date = datetime.datetime.strptime(contract_report.end_date, "%Y-%m-%d").date()
-                return start_date.strftime('%d-%m-%Y')+" - "+end_date.strftime('%d-%m-%Y')
+            if not contract_report.start_date:
+                start_date = datetime.datetime.strptime(contract_date_start, "%Y-%m-%d").date()
             else:
-                return default_date_string
+                start_date = datetime.datetime.strptime(contract_report.start_date, "%Y-%m-%d").date()
+            if not contract_report.end_date:
+                end_date = date.today()
+            else:
+                end_date = datetime.datetime.strptime(contract_report.end_date, "%Y-%m-%d").date()
+            return start_date.strftime('%d-%m-%Y')+" - "+end_date.strftime('%d-%m-%Y')
         else:
             return default_date_string
     

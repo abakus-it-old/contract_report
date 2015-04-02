@@ -2,7 +2,6 @@
 <openerp>
     <data>
         <record id="1" model="contract.report">
-            <field name="active">False</field>
         </record>
     </data>
 </openerp>
