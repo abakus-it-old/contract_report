@@ -1,4 +1,4 @@
-﻿from openerp import models, fields, api
+from openerp import models, fields, api
 import datetime
 from datetime import date
 
@@ -63,7 +63,13 @@ class account_analytic_account_report_methods(models.Model):
                 else:
                     end_date = datetime.datetime.strptime(contract_date_end, "%Y-%m-%d").date()
             else:
-                end_date = datetime.datetime.strptime(contract_report.end_date, "%Y-%m-%d").date()
+                if datetime.datetime.strptime(contract_report.end_date, "%Y-%m-%d").date() > datetime.datetime.strptime(contract_date_end, "%Y-%m-%d").date():
+                    if date.today() <= datetime.datetime.strptime(contract_date_end, "%Y-%m-%d").date():
+                        end_date = date.today()
+                    else:
+                        end_date = datetime.datetime.strptime(contract_date_end, "%Y-%m-%d").date()
+                else:
+                    end_date = datetime.datetime.strptime(contract_report.end_date, "%Y-%m-%d").date()
             return start_date.strftime('%d-%m-%Y')+" - "+end_date.strftime('%d-%m-%Y')
         else:
             return default_date_string
