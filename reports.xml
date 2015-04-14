@@ -99,7 +99,7 @@
 				                        	</t>
 										</td>
 				                        <td><span t-esc="o.decimal_to_hours(line.unit_amount)"/></td>
-				                        <t t-set="computed_amount" t-value="computed_amount + (price * line.unit_amount)"/>
+				                        <t t-set="computed_amount" t-value="computed_amount + ((price * line.unit_amount)*((100-line.to_invoice.factor)/100))"/>
 				                        <td><span t-esc="computed_amount"/> €</td>
 				                    </tr>
 				                    <t t-set="service_delivery_total" t-value="service_delivery_total + computed_amount"/>
