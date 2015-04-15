@@ -1,6 +1,5 @@
 ﻿from openerp import models, fields, api
 from openerp.osv import osv
-#from datetime import date
 
 class contract_report(models.Model):
     _name = 'contract.report'

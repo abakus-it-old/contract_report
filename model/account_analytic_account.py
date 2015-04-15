@@ -5,6 +5,15 @@ from datetime import date
 class account_analytic_account_report_methods(models.Model):
     _inherit = ['account.analytic.account']
     
+    def format_decimal_number(self, number, point_numbers=2, separator=','):
+        number_string = str(round(round(number, point_numbers+1),point_numbers))
+        for x in range(0, point_numbers):
+            if len(number_string[number_string.rfind('.')+1:]) < 2:
+                number_string += '0'
+            else:
+                break        
+        return number_string.replace('.',separator)
+        
     def decimal_to_hours(self, hoursDecimal):
         hours = int(hoursDecimal);
         minutesDecimal = ((hoursDecimal - hours) * 60);

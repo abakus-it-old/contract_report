@@ -51,7 +51,7 @@
 							</tr>
 							<tr>
 								<th>Prepaid units</th>
-								<td><span t-esc="o.decimal_to_hours(o.quantity_max)"/> H (Unit price: <span t-esc="o.timesheet_product_price"/> €, On site price: <span t-esc="o.on_site_product.lst_price"/> €)</td>
+								<td><span t-esc="o.decimal_to_hours(o.quantity_max)"/> H (Unit price: <span t-esc="o.format_decimal_number(o.timesheet_product_price)"/> €, On site price: <span t-esc="o.format_decimal_number(o.on_site_product.lst_price)"/> €)</td>
 							</tr>
 							<tr>
 								<th>Period</th>
@@ -73,7 +73,8 @@
 								<th style="width: 130px;">User</th>
 								<th>Kind</th>
 								<th>Quantity</th>
-								<th style="width: 90px;">Amount</th>
+                                <th>Invoiceable</th>
+								<th class="text-right" style="width: 90px;">Amount</th>
 							</tr>
 							<t t-set="service_delivery_total" t-value="0"/>
 							<t t-set="working_hours_total" t-value="0"/>
@@ -99,8 +100,9 @@
 				                        	</t>
 										</td>
 				                        <td><span t-esc="o.decimal_to_hours(line.unit_amount)"/></td>
+                                        <td><span t-esc="line.to_invoice.name"/></td>
 				                        <t t-set="computed_amount" t-value="computed_amount + ((price * line.unit_amount)*((100-line.to_invoice.factor)/100))"/>
-				                        <td><span t-esc="computed_amount"/> €</td>
+				                        <td class="text-right"><span t-esc="o.format_decimal_number(computed_amount)"/> €</td>
 				                    </tr>
 				                    <t t-set="service_delivery_total" t-value="service_delivery_total + computed_amount"/>
 				                    <t t-set="working_hours_total" t-value="working_hours_total + line.unit_amount"/>
@@ -110,7 +112,7 @@
 				        <table class="table">
 				            <tr class="abakusBordered">
 				                <th>Service delivery total</th>
-				                <th class="text-right"><span t-esc="service_delivery_total"/> €</th>
+				                <th class="text-right"><span t-esc="o.format_decimal_number(service_delivery_total)"/> €</th>
 				            </tr>
 				        </table>
 
@@ -132,7 +134,7 @@
 				                        </td>
 				                        <td><span t-field="line.name"/></td>
 				                        <td><span t-field="line.ref"/></td>
-				                        <td><span t-field="line.amount"/> €</td>
+				                        <td><span t-esc="o.format_decimal_number(line.amount)"/> €</td>
 				                    </tr>
 				                    <t t-set="prepaid_instalment_total" t-value="prepaid_instalment_total + line.amount"/>
 				                </t>
@@ -141,7 +143,7 @@
 				        <table class="table">
 				            <tr class="abakusBordered">
 				                <th>Prepaid instalment total</th>
-				                <th class="text-right"><span t-esc="prepaid_instalment_total"/> €</th>
+				                <th class="text-right"><span t-esc="o.format_decimal_number(prepaid_instalment_total)"/> €</th>
 				            </tr>
 				        </table>
 
@@ -158,11 +160,11 @@
 				            </tr>
 				            <tr>
 				                <th>Service delivery</th>
-				                <td class="text-right"><span t-esc="service_delivery_total"/> €</td>
+				                <td class="text-right"><span t-esc="o.format_decimal_number(service_delivery_total)"/> €</td>
 				            </tr>
 				            <tr>
 				                <th>Prepaid instalment</th>
-				                <td class="text-right"><span t-esc="prepaid_instalment_total"/> €</td>
+				                <td class="text-right"><span t-esc="o.format_decimal_number(prepaid_instalment_total)"/> €</td>
 				            </tr>
 				            <tr>
 				                <th>Balance</th>
@@ -174,9 +176,10 @@
                                 <t t-if="balance&lt;0">
                                     In our favour
 				                </t>    
-                                <span t-esc="balance"/> €</th>
+                                <span t-esc="o.format_decimal_number(abs(balance))"/> €</th>
 				            </tr>
-				        </table>  
+				        </table> 
+                        <small>All prices plus VAT, where applicable.</small>
 				        <!--
 					        <p style="page-break-after:always;"></p>
 				            <h1 class="text-center text-uppercase">SLA</h1>

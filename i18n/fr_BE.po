@@ -214,3 +214,12 @@ msgstr "Heures prestées"
 msgid "€, On site price:"
 msgstr "€, prix sur site :"
 
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Invoiceable"
+msgstr "Facturable"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "All prices plus VAT, where applicable."
+msgstr "Tous les prix hors TVA, si applicable."
