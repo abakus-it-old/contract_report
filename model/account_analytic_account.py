@@ -1,6 +1,7 @@
 from openerp import models, fields, api
 import datetime
 from datetime import date
+import pytz
 
 class account_analytic_account_report_methods(models.Model):
     _inherit = ['account.analytic.account']
@@ -55,10 +56,10 @@ class account_analytic_account_report_methods(models.Model):
         contract_report_obj = self.pool.get('contract.report')
         contract_report_id = contract_report_obj.search(cr, uid, [('id','=',1)])
         if not contract_date_start:
-            contract_date_start = datetime.datetime.strptime("1980-01-01", "%Y-%m-%d").date()
+            contract_date_start = datetime.datetime.strptime("1980-01-01", "%Y-%m-%d").date().strftime("%Y-%m-%d")
         if not contract_date_end:
-            local_tz = timezone('Europe/Brussels')
-            contract_date_end = datetime.datetime.now(local_tz).date()
+            local_tz = pytz.timezone('Europe/Brussels')
+            contract_date_end = datetime.datetime.now(local_tz).date().strftime("%Y-%m-%d")
         default_date_string = datetime.datetime.strptime(contract_date_start, "%Y-%m-%d").date().strftime('%d-%m-%Y')+" - "+datetime.datetime.strptime(contract_date_end, "%Y-%m-%d").date().strftime('%d-%m-%Y')
         if contract_report_id:
             contract_report = contract_report_obj.browse(cr, uid, contract_report_id[0])
@@ -84,4 +85,8 @@ class account_analytic_account_report_methods(models.Model):
             return default_date_string
     
     def format_date(self, a_date):
-        return datetime.datetime.strptime(a_date, "%Y-%m-%d").date().strftime('%d-%m-%Y')
+        try:
+            result = datetime.datetime.strptime(a_date, "%Y-%m-%d").date().strftime('%d-%m-%Y')
+            return result
+        except:
+            return ""
