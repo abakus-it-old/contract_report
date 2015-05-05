@@ -182,14 +182,92 @@
                                 </tr>
                             </table> 
                             <small>All prices plus VAT, where applicable.</small>
-				        </div>
-                        <!--
+				        </div>                        
                         <div style="page-break-inside:avoid;">
-                            <h1 class="text-center text-uppercase">SLA stats</h1>
-                                <img t-att-src="o.issue_per_priority" style="max-height:250px"/>
-                                <img t-att-src="o.issue_per_user" style="max-height:250px"/>
+                            <h1 class="text-center text-uppercase">Statistics</h1>
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <h2>Number of issues per stage</h2>
+                                        <t t-foreach="o.dictionary_to_list(o._issue_per_stage())" t-as="stage">
+                                            <span t-esc="stage[0]"/>: <span t-esc="stage[1]"/>
+                                            <br/>
+                                        </t>
+                                    </td>
+                                    <td class="text-right"><img t-att-src="o.issue_per_stage" style="max-height:200px;"/></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2>SLA</h2>
+                                        <t t-foreach="o.dictionary_to_list(o._issue_per_result())" t-as="result">
+                                            <span t-esc="result[0]"/>: <span t-esc="result[1]"/>
+                                            <br/>
+                                        </t>
+                                        Average reaction time: <t t-if="int(o.average_reaction_time)==0">0-1</t><t t-if="int(o.average_reaction_time)>0"><span t-esc="int(o.average_reaction_time)"/></t> min
+                                    </td>
+                                    <td class="text-right"><img t-att-src="o.issue_per_result" style="max-height:200px"/></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2>Number of issues per service delivery type</h2>
+                                        <t t-set="types" t-value="o._issue_per_type_detail()"/>
+                                        <table class="table table-condensed table-bordered">
+                                            <tr>
+                                                <th></th>
+                                                <th>SD</th>
+                                                <th>OS</th>
+                                                <th>Total</th>
+                                            </tr>
+                                            <tr>
+                                                <th>Total price</th>
+                                                <td><span t-esc="o.format_decimal_number(types['SD']['priceSum'])"/> €</td>
+                                                <td><span t-esc="o.format_decimal_number(types['OS']['priceSum'])"/> €</td>
+                                                <td><span t-esc="o.format_decimal_number(types['OS']['priceSum']+types['SD']['priceSum'])"/> €</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Total time</th>
+                                                <td><span t-esc="o.decimal_to_hours(types['SD']['timeSum'])"/></td>
+                                                <td><span t-esc="o.decimal_to_hours(types['OS']['timeSum'])"/></td>
+                                                <td><span t-esc="o.decimal_to_hours(types['OS']['timeSum']+types['SD']['timeSum'])"/></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Total issues</th>
+                                                <td><span t-esc="types['SD']['ticketSum']"/></td>
+                                                <td><span t-esc="types['OS']['ticketSum']"/></td>
+                                                <td><span t-esc="types['OS']['ticketSum']+types['SD']['ticketSum']"/></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Issues per stuff</th>
+                                                <td>
+                                                    <t t-foreach="o.dictionary_to_list(types['SD']['stuff'])" t-as="stuff">
+                                                        <span t-esc="stuff[0]"/>: <span t-esc="stuff[1]"/>
+                                                        <br/>
+                                                    </t>
+                                                </td>
+                                                <td>
+                                                    <t t-foreach="o.dictionary_to_list(types['OS']['stuff'])" t-as="stuff">
+                                                        <span t-esc="stuff[0]"/>: <span t-esc="stuff[1]"/>
+                                                        <br/>
+                                                    </t>
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td class="text-right"><img t-att-src="o.issue_per_type" style="max-height:200px"/></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2>Number of issues per priority</h2>
+                                        <t t-foreach="o.dictionary_to_list(o._issue_per_priority())" t-as="priority">
+                                            <span t-esc="priority[0]"/>: <span t-esc="priority[1]"/>
+                                            <br/>
+                                        </t>
+                                    </td>
+                                    <td class="text-right"><img t-att-src="o.issue_per_priority" style="max-height:200px"/></td>
+                                </tr>
+                            </table> 
 				        </div>
-                        -->
 				    </div>
 				</t>
 			</t>
