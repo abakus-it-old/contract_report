@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 8.0-20150209\n"
+"Project-Id-Version: Odoo Server 8.0-20150330\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-17 10:00+0000\n"
-"PO-Revision-Date: 2015-03-17 10:00+0000\n"
+"POT-Creation-Date: 2015-05-07 14:12+0000\n"
+"PO-Revision-Date: 2015-05-07 14:12+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,9 +16,13 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: contract_report
-#: field:contract.report,active:0
-#: field:contract.report.wizard,active:0
-msgid "Active"
+#: view:website:contract_report.report_contract_document
+msgid "\"On-Site\" on site intervention / appointment"
+msgstr ""
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "All prices plus VAT, where applicable."
 msgstr ""
 
 #. module: contract_report
@@ -29,6 +33,11 @@ msgstr ""
 #. module: contract_report
 #: model:ir.model,name:contract_report.model_account_analytic_account
 msgid "Analytic Account"
+msgstr ""
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Average reaction time:"
 msgstr ""
 
 #. module: contract_report
@@ -118,6 +127,36 @@ msgstr ""
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
+msgid "Information"
+msgstr ""
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Invoiceable"
+msgstr ""
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Issues"
+msgstr ""
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Issues per priority"
+msgstr ""
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Issues per service delivery type"
+msgstr ""
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Issues per stage"
+msgstr ""
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
 msgid "Kind"
 msgstr ""
 
@@ -135,6 +174,11 @@ msgstr ""
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
+msgid "OD : technician present on site"
+msgstr ""
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
 msgid "On site support"
 msgstr ""
 
@@ -145,12 +189,12 @@ msgstr ""
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
-msgid "Prepaid instalment"
+msgid "Invoices"
 msgstr ""
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
-msgid "Prepaid instalment total"
+msgid "Invoices total"
 msgstr ""
 
 #. module: contract_report
@@ -160,7 +204,22 @@ msgstr ""
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
+msgid "Price"
+msgstr ""
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
 msgid "Quantity"
+msgstr ""
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Reaction time are only available  valid for customers with SLA contracts."
+msgstr ""
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Reaction time: (Compliance 85%)"
 msgstr ""
 
 #. module: contract_report
@@ -169,8 +228,28 @@ msgid "Reference"
 msgstr ""
 
 #. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "SD : reaction per email or telephone"
+msgstr ""
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "SLA"
+msgstr ""
+
+#. module: contract_report
 #: view:contract.report.wizard:contract_report.view_contract_report_wizard
 msgid "Save"
+msgstr ""
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Service Desk accessible by calling +32 87 59 35 58 or per email at support@abakusitsolutions.eu"
+msgstr ""
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Service Level Agreement"
 msgstr ""
 
 #. module: contract_report
@@ -190,18 +269,30 @@ msgid "Start date"
 msgstr ""
 
 #. module: contract_report
+#: field:contract.report,statistics:0
+#: field:contract.report.wizard,statistics:0
+#: view:website:contract_report.report_contract_document
+msgid "Statistics"
+msgstr ""
+
+#. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "Summary"
 msgstr ""
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
-msgid "Support Contract"
+msgid "Time"
 msgstr ""
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
-msgid "Timesheet Report"
+msgid "Timesheets and Invoices Report"
+msgstr ""
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Total"
 msgstr ""
 
 #. module: contract_report
@@ -211,7 +302,17 @@ msgstr ""
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
+msgid "Work logs"
+msgstr ""
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
 msgid "Working hours"
+msgstr ""
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "min"
 msgstr ""
 
 #. module: contract_report
@@ -219,12 +320,3 @@ msgstr ""
 msgid "€, On site price:"
 msgstr ""
 
-#. module: contract_report
-#: view:website:contract_report.report_contract_document
-msgid "Invoiceable"
-msgstr ""
-
-#. module: contract_report
-#: view:website:contract_report.report_contract_document
-msgid "All prices plus VAT, where applicable."
-msgstr ""

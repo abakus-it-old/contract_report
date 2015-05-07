@@ -90,3 +90,14 @@ class account_analytic_account_report_methods(models.Model):
             return result
         except:
             return ""
+    
+    def isStatistics(self):
+        cr = self.env.cr
+        uid = self.env.user.id
+        contract_report_obj = self.pool.get('contract.report')
+        contract_report_id = contract_report_obj.search(cr, uid, [('id','=',1)])
+        if contract_report_id:
+            contract_report = contract_report_obj.browse(cr, uid, contract_report_id[0])
+            return contract_report.statistics
+        else:
+            return False
