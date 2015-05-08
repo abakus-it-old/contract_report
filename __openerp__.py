@@ -17,6 +17,7 @@
         'contract_report_data.xml',
         'wizard/contract_report_view.xml',
         'report/contract_report.xml',
+        'view/account_analytic_account_view.xml',
         'security/ir.model.access.csv',
     ],
 }

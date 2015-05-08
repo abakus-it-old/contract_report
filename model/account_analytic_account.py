@@ -5,6 +5,22 @@ import pytz
 
 class account_analytic_account_report_methods(models.Model):
     _inherit = ['account.analytic.account']
+    contract_report_info = fields.Char(compute='_compute_contract_report_info',string="Contract report settings", store=False)
+    
+    def print_timesheets_report(self, cr, uid, ids, context=None):
+        return self.pool['report'].get_action(cr, uid, ids, 'contract_report.report_contract', context=context)
+    
+    @api.one
+    def _compute_contract_report_info(self):
+        self.contract_report_info = ""
+        cr = self.env.cr
+        uid = self.env.user.id
+        contract_report_obj = self.pool.get('contract.report')
+        contract_report_id = contract_report_obj.search(cr, uid, [('id','=',1)])
+        if contract_report_id:
+            contract_report = contract_report_obj.browse(cr, uid, contract_report_id[0])
+            if contract_report:
+                self.contract_report_info = "Start date: %s, End date: %s, Statistics: %s" %(contract_report.start_date,contract_report.end_date,str(contract_report.statistics))
     
     def format_decimal_number(self, number, point_numbers=2, separator=','):
         number_string = str(round(round(number, point_numbers+1),point_numbers))
