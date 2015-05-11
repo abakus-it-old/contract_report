@@ -1,4 +1,4 @@
-from openerp import models, fields, api
+from openerp import models, fields, api, _
 import datetime
 from datetime import date
 import pytz
@@ -6,6 +6,32 @@ import pytz
 class account_analytic_account_report_methods(models.Model):
     _inherit = ['account.analytic.account']
     contract_report_info = fields.Char(compute='_compute_contract_report_info',string="Contract report settings", store=False)
+
+    @api.multi
+    def action_service_report_sent(self):
+        #assert len(self) == 1, 'This option should only be used for a single id at a time.'
+        template = self.env.ref('contract_report.email_template_service_report', False)
+        compose_form = self.env.ref('mail.email_compose_message_wizard_form', False)
+        ctx = dict(
+            default_model='account.analytic.account',
+            default_res_id=self.id,
+            default_use_template=bool(template),
+            default_template_id=template.id,
+            default_composition_mode='comment',
+            mark_invoice_as_sent=True,
+        )
+        return {
+            'name': _('Compose Email'),
+            'type': 'ir.actions.act_window',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model': 'mail.compose.message',
+            'views': [(compose_form.id, 'form')],
+            'view_id': compose_form.id,
+            'target': 'new',
+            'context': ctx,
+        }
+
     
     def print_timesheets_report(self, cr, uid, ids, context=None):
         return self.pool['report'].get_action(cr, uid, ids, 'contract_report.report_contract', context=context)

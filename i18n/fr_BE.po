@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0-20150330\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-07 14:13+0000\n"
-"PO-Revision-Date: 2015-05-07 14:13+0000\n"
+"POT-Creation-Date: 2015-05-11 09:30+0000\n"
+"PO-Revision-Date: 2015-05-11 09:30+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -48,12 +48,22 @@ msgstr "Balance"
 #. module: contract_report
 #: view:contract.report.wizard:contract_report.view_contract_report_wizard
 msgid "Cancel"
-msgstr "Annuler"
+msgstr "Cancel"
+
+#. module: contract_report
+#: view:account.analytic.account:contract_report.view_account_analytic_account_sla_stats
+msgid "Change settings"
+msgstr "Change settings"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "Contract"
 msgstr "Contrat"
+
+#. module: contract_report
+#: view:account.analytic.account:contract_report.view_account_analytic_account_sla_stats
+msgid "Contract Information"
+msgstr "Renseignements sur le contrat"
 
 #. module: contract_report
 #: model:ir.actions.act_window,name:contract_report.action_contract_report_wizard
@@ -137,6 +147,16 @@ msgstr "Facturable"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
+msgid "Invoices"
+msgstr "Factures"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Invoices total"
+msgstr "Factures total"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
 msgid "Issues"
 msgstr "Tickets"
 
@@ -153,7 +173,7 @@ msgstr "Tickets par type de prestation"
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "Issues per stage"
-msgstr "Tickets par état"
+msgstr "Tickets par étappe"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -174,6 +194,11 @@ msgstr "Dernière mise à jour le "
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
+msgid "No SLA"
+msgstr "PAs de SLA"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
 msgid "OD : technician present on site"
 msgstr "OD : technicien présent sur site"
 
@@ -189,16 +214,6 @@ msgstr "Période"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
-msgid "Invoices"
-msgstr "Factures"
-
-#. module: contract_report
-#: view:website:contract_report.report_contract_document
-msgid "Invoices total"
-msgstr "Factures total"
-
-#. module: contract_report
-#: view:website:contract_report.report_contract_document
 msgid "Prepaid units"
 msgstr "Heures prépayées"
 
@@ -206,6 +221,16 @@ msgstr "Heures prépayées"
 #: view:website:contract_report.report_contract_document
 msgid "Price"
 msgstr "Prix"
+type
+#. module: contract_report
+#: view:account.analytic.account:contract_report.view_account_analytic_account_sla_stats
+msgid "Print report"
+msgstr "Print report"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Priority"
+msgstr "Priorité"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -216,6 +241,11 @@ msgstr "Quantité"
 #: view:website:contract_report.report_contract_document
 msgid "Reaction time are only available  valid for customers with SLA contracts."
 msgstr "Les conventions sur les temps de réaction ne valent que pour des clients avec SLA."
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Reaction time in minutes"
+msgstr "Temps de réaction en minutes"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -250,7 +280,7 @@ msgstr "Service Desk accessible via tél +32.87593558 ou par email à l’adress
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "Service Level Agreement"
-msgstr "Service Level Agreement"
+msgstr "Contrat de niveau de service (Service Level Agreement)"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -261,6 +291,16 @@ msgstr "Service presté"
 #: view:website:contract_report.report_contract_document
 msgid "Service delivery total"
 msgstr "Service total presté"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Service report"
+msgstr "Rapport de service"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Service type"
+msgstr "Type de service"
 
 #. module: contract_report
 #: field:contract.report,start_date:0
@@ -282,13 +322,18 @@ msgstr "Résumé"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
+msgid "The present report is not an invoice."
+msgstr "Le présent rapport n'est pas une facture."
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
 msgid "Time"
 msgstr "Temps"
 
 #. module: contract_report
-#: view:website:contract_report.report_contract_document
+#: view:account.analytic.account:contract_report.view_account_analytic_account_sla_stats
 msgid "Timesheets and Invoices Report"
-msgstr "Compte rendu des prestations de services et factures"
+msgstr "Timesheets and Invoices Report"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document

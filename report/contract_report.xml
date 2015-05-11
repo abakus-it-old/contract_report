@@ -37,7 +37,7 @@
 							</div>
 						</div>
 
-						<h1 class="text-center">Timesheets and Invoices Report</h1>
+						<h1 class="text-center">Service report</h1>
 
 						<!-- contract details -->
 						<table class="table abakusBordered">
@@ -52,6 +52,10 @@
 							<tr>
 								<th>Prepaid units</th>
 								<td><span t-esc="o.decimal_to_hours(o.quantity_max)"/> H (Unit price: <span t-esc="o.format_decimal_number(o.timesheet_product_price)"/> €, On site price: <span t-esc="o.format_decimal_number(o.on_site_product.lst_price)"/> €)</td>
+							</tr>
+                            <tr>
+								<th>SLA</th>
+								<td><t t-if="o.sla_bool"><span t-esc="o.sla_name"/></t><t t-if="not o.sla_bool">No SLA</t></td>
 							</tr>
 							<tr>
 								<th>Period</th>
@@ -151,24 +155,24 @@
 
                         <div style="page-break-inside:avoid;">
                             <h2>Summary</h2>
-                            <table class="table abakusBackground">
+                            <table class="table abakusBordered">
                                 <tr>
-                                    <th>Working hours</th>
+                                    <td>Working hours</td>
                                     <td class="text-right"><span t-esc="o.decimal_to_hours(working_hours_total)"/></td>
                                 </tr>
                                 <tr>
-                                    <th>On site support</th>
+                                    <td>On site support</td>
                                     <td class="text-right"><span t-esc="on_site_total"/></td>
                                 </tr>
                                 <tr>
-                                    <th>Service delivery</th>
+                                    <td>Service delivery</td>
                                     <td class="text-right"><span t-esc="o.format_decimal_number(service_delivery_total)"/> €</td>
                                 </tr>
                                 <tr>
-                                    <th>Invoices</th>
+                                    <td>Invoices</td>
                                     <td class="text-right"><span t-esc="o.format_decimal_number(prepaid_instalment_total)"/> €</td>
                                 </tr>
-                                <tr>
+                                <tr style="font-size:15px;">
                                     <th>Balance</th>
                                     <t t-set="balance" t-value="prepaid_instalment_total - service_delivery_total"/>
                                     <th class="text-right">
@@ -181,7 +185,8 @@
                                     <span t-esc="o.format_decimal_number(abs(balance))"/> €</th>
                                 </tr>
                             </table> 
-                            <small>All prices plus VAT, where applicable.</small>
+                            <small>All prices plus VAT, where applicable.</small><br/>
+                            <small>The present report is not an invoice.</small>
 				        </div>
                         
                         <div style="page-break-inside:avoid;">
@@ -197,7 +202,29 @@
                                 </tr>
                                 <tr>
                                     <th>SLA</th>
-                                    <td>Service Level Agreement</td>
+                                    <td>Service Level Agreement
+                                         <t t-if="o.sla_bool">
+                                             <br/><br/>
+                                             <table class="table table-condensed table-bordered table-striped">
+                                                 <tr>
+                                                     <th>Service type</th>
+                                                     <th>Priority</th>
+                                                     <th>Reaction time in minutes</th>
+                                                 </tr>
+                                                 <t t-foreach="o.sla_id.sla_rule_ids" t-as="rule">
+                                                     <tr>
+                                                        <td class="text-uppercase"><span t-esc="rule.service_type"/></td>
+                                                         <td>
+                                                             <t t-if="rule.issue_priority == '0'">Low</t>
+                                                             <t t-if="rule.issue_priority == '1'">Normal</t>
+                                                             <t t-if="rule.issue_priority == '2'">High</t>
+                                                         </td>
+                                                         <td><span t-esc="rule.action_time"/></td>
+                                                     </tr>
+                                                 </t>
+                                             </table>
+                                         </t>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th>Reaction time: (Compliance 85%)</th>
@@ -223,17 +250,19 @@
                                         </td>
                                         <td class="text-right"><img t-att-src="o.issue_per_stage" style="max-height:200px;"/></td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            <h2>SLA</h2>
-                                            <t t-foreach="o.dictionary_to_list(o._issue_per_result())" t-as="result">
-                                                <span t-esc="result[0]"/>: <span t-esc="result[1]"/>
-                                                <br/>
-                                            </t>
-                                            Average reaction time: <t t-if="int(o.average_reaction_time)==0">0-1</t><t t-if="int(o.average_reaction_time)>0"><span t-esc="int(o.average_reaction_time)"/></t> min
-                                        </td>
-                                        <td class="text-right"><img t-att-src="o.issue_per_result" style="max-height:200px"/></td>
-                                    </tr>
+                                    <t t-if="o.sla_bool">
+                                        <tr>
+                                            <td>
+                                                <h2>SLA</h2>
+                                                <t t-foreach="o.dictionary_to_list(o._issue_per_result())" t-as="result">
+                                                    <span t-esc="result[0]"/>: <span t-esc="result[1]"/>
+                                                    <br/>
+                                                </t>
+                                                Average reaction time: <t t-if="int(o.average_reaction_time)==0">0-1</t><t t-if="int(o.average_reaction_time)>0"><span t-esc="int(o.average_reaction_time)"/></t> min
+                                            </td>
+                                            <td class="text-right"><img t-att-src="o.issue_per_result" style="max-height:200px"/></td>
+                                        </tr>
+                                    </t>
                                     <tr>
                                         <td>
                                             <h2>Issues per service delivery type</h2>
