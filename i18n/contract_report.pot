@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0-20150330\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-11 09:29+0000\n"
-"PO-Revision-Date: 2015-05-11 09:29+0000\n"
+"POT-Creation-Date: 2015-05-12 12:04+0000\n"
+"PO-Revision-Date: 2015-05-12 12:04+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,71 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: contract_report
+#: model:email.template,body_html:contract_report.email_template_service_report
+msgid "\n"
+"<div style=\"font-family: Arial, Helvetica, Calibri, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; padding: 0 5px 0 5px; link\">\n"
+"\n"
+"    <p>Dear client,</p>\n"
+"\n"
+"    <p>Please find attached the service report</p>\n"
+"    \n"
+"    <p style=\"border-left: 2px solid #E97B2E; margin-left: 10px; padding-left: 5px;\">\n"
+"        &nbsp;&nbsp;<strong>INFORMATION</strong><br />\n"
+"        &nbsp;&nbsp;Client: <strong>${object.partner_id.name}</strong><br />\n"
+"        &nbsp;&nbsp;Contact person: <strong>${object.manager_id.name}</strong><br />\n"
+"    </p>  \n"
+"        \n"
+"    <p>Don't hesitate to contact us if you have any question.</p>\n"
+"    <p>Thanks a lot for having chosen ${object.company_id.name or 'us'}!</p>\n"
+"\n"
+"    <!-- SIGNATURE -->\n"
+"    <div style=\"width: 100%; margin: 0px; padding: 0px; background-color: #E97B2E; border-top-left-radius: 5px 5px; border-top-right-radius: 5px 5px; background-repeat: repeat no-repeat;\">\n"
+"        <h3 style=\"margin: 0px; padding: 10px 15px; font-size: 14px; color: #DDD;\">\n"
+"            <strong>${object.company_id.name}</strong></h3>\n"
+"    </div>\n"
+"    <div style=\"width: 100% -15px; margin: 0px; padding: 5px 15px; line-height: 16px; background-color: #DDD; border-bottom-right-radius: 5px 5px; border-bottom-left-radius: 5px 5px; \">\n"
+"        <span style=\"color: #222; margin-bottom: 5px; display: block; \">\n"
+"        % if object.company_id.street:\n"
+"            ${object.company_id.street}<br/>\n"
+"        % endif\n"
+"        % if object.company_id.street2:\n"
+"            ${object.company_id.street2}<br/>\n"
+"        % endif\n"
+"        % if object.company_id.city or object.company_id.zip:\n"
+"            ${object.company_id.zip} ${object.company_id.city}<br/>\n"
+"        % endif\n"
+"        % if object.company_id.country_id:\n"
+"            ${object.company_id.state_id and ('%s, ' % object.company_id.state_id.name) or ''} ${object.company_id.country_id.name or ''}<br/>\n"
+"        % endif\n"
+"        </span>\n"
+"        % if object.company_id.phone:\n"
+"            <div style=\"margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; \">\n"
+"                Phone: &nbsp; ${object.company_id.phone}\n"
+"            </div>\n"
+"        % endif\n"
+"         % if object.company_id.fax:\n"
+"            <div style=\"margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; \">\n"
+"                Fax: &nbsp; ${object.company_id.fax}\n"
+"            </div>\n"
+"        % endif\n"
+"        % if object.company_id.website:\n"
+"            <div>\n"
+"                <a href=\"${object.company_id.website}\">www.abakusitsolutions.eu</a>\n"
+"            </div>\n"
+"        %endif\n"
+"    </div>\n"
+"</div>\n"
+"            "
+msgstr ""
+
+#. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "\"On-Site\" on site intervention / appointment"
+msgstr ""
+
+#. module: contract_report
+#: model:email.template,subject:contract_report.email_template_service_report
+msgid "${object.company_id.name|safe}: Service Report"
 msgstr ""
 
 #. module: contract_report
@@ -53,6 +116,12 @@ msgstr ""
 #. module: contract_report
 #: view:account.analytic.account:contract_report.view_account_analytic_account_sla_stats
 msgid "Change settings"
+msgstr ""
+
+#. module: contract_report
+#: code:addons/contract_report/model/account_analytic_account.py:24
+#, python-format
+msgid "Compose Email"
 msgstr ""
 
 #. module: contract_report
@@ -117,6 +186,11 @@ msgstr ""
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "H (Unit price:"
+msgstr ""
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "High"
 msgstr ""
 
 #. module: contract_report
@@ -194,7 +268,17 @@ msgstr ""
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
+msgid "Low"
+msgstr ""
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
 msgid "No SLA"
+msgstr ""
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Normal"
 msgstr ""
 
 #. module: contract_report
@@ -273,6 +357,11 @@ msgid "Save"
 msgstr ""
 
 #. module: contract_report
+#: view:account.analytic.account:contract_report.view_account_analytic_account_sla_stats
+msgid "Send by Email"
+msgstr ""
+
+#. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "Service Desk accessible by calling +32 87 59 35 58 or per email at support@abakusitsolutions.eu"
 msgstr ""
@@ -280,6 +369,11 @@ msgstr ""
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "Service Level Agreement"
+msgstr ""
+
+#. module: contract_report
+#: view:account.analytic.account:contract_report.view_account_analytic_account_sla_stats
+msgid "Service Report"
 msgstr ""
 
 #. module: contract_report
@@ -300,6 +394,11 @@ msgstr ""
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "Service type"
+msgstr ""
+
+#. module: contract_report
+#: model:email.template,report_name:contract_report.email_template_service_report
+msgid "ServiceReport_${(object.name or '').replace('/','_').replace('*','_').replace(':','_')}"
 msgstr ""
 
 #. module: contract_report
@@ -328,11 +427,6 @@ msgstr ""
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "Time"
-msgstr ""
-
-#. module: contract_report
-#: view:account.analytic.account:contract_report.view_account_analytic_account_sla_stats
-msgid "Timesheets and Invoices Report"
 msgstr ""
 
 #. module: contract_report

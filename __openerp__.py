@@ -14,11 +14,11 @@
     This module has been developed by Bernard Delhez, intern @ AbAKUS it-solutions, under the control of Valentin Thirion.
     """,
     'data': [
-        'contract_report_data.xml',
-        'contract_report_action_data.xml',
         'wizard/contract_report_view.xml',
         'report/contract_report.xml',
         'view/account_analytic_account_view.xml',
         'security/ir.model.access.csv',
+        'contract_report_data.xml',
+        'contract_report_action_data.xml',
     ],
 }

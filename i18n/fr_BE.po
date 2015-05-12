@@ -1,4 +1,4 @@
-# Translation of Odoo Server.
+﻿# Translation of Odoo Server.
 # This file contains the translation of the following modules:
 #	* contract_report
 #
@@ -14,6 +14,117 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
+
+#. module: contract_report
+#: model:email.template,body_html:contract_report.email_template_service_report
+msgid "\n"
+"<div style=\"font-family: Arial, Helvetica, Calibri, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; padding: 0 5px 0 5px; link\">\n"
+"\n"
+"    <p>Dear client,</p>\n"
+"\n"
+"    <p>Please find attached the service report</p>\n"
+"    \n"
+"    <p style=\"border-left: 2px solid #E97B2E; margin-left: 10px; padding-left: 5px;\">\n"
+"        &nbsp;&nbsp;<strong>INFORMATION</strong><br />\n"
+"        &nbsp;&nbsp;Client: <strong>${object.partner_id.name}</strong><br />\n"
+"        &nbsp;&nbsp;Contact person: <strong>${object.manager_id.name}</strong><br />\n"
+"    </p>  \n"
+"        \n"
+"    <p>Don't hesitate to contact us if you have any question.</p>\n"
+"    <p>Thanks a lot for having chosen ${object.company_id.name or 'us'}!</p>\n"
+"\n"
+"    <!-- SIGNATURE -->\n"
+"    <div style=\"width: 100%; margin: 0px; padding: 0px; background-color: #E97B2E; border-top-left-radius: 5px 5px; border-top-right-radius: 5px 5px; background-repeat: repeat no-repeat;\">\n"
+"        <h3 style=\"margin: 0px; padding: 10px 15px; font-size: 14px; color: #DDD;\">\n"
+"            <strong>${object.company_id.name}</strong></h3>\n"
+"    </div>\n"
+"    <div style=\"width: 100% -15px; margin: 0px; padding: 5px 15px; line-height: 16px; background-color: #DDD; border-bottom-right-radius: 5px 5px; border-bottom-left-radius: 5px 5px; \">\n"
+"        <span style=\"color: #222; margin-bottom: 5px; display: block; \">\n"
+"        % if object.company_id.street:\n"
+"            ${object.company_id.street}<br/>\n"
+"        % endif\n"
+"        % if object.company_id.street2:\n"
+"            ${object.company_id.street2}<br/>\n"
+"        % endif\n"
+"        % if object.company_id.city or object.company_id.zip:\n"
+"            ${object.company_id.zip} ${object.company_id.city}<br/>\n"
+"        % endif\n"
+"        % if object.company_id.country_id:\n"
+"            ${object.company_id.state_id and ('%s, ' % object.company_id.state_id.name) or ''} ${object.company_id.country_id.name or ''}<br/>\n"
+"        % endif\n"
+"        </span>\n"
+"        % if object.company_id.phone:\n"
+"            <div style=\"margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; \">\n"
+"                Phone: &nbsp; ${object.company_id.phone}\n"
+"            </div>\n"
+"        % endif\n"
+"         % if object.company_id.fax:\n"
+"            <div style=\"margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; \">\n"
+"                Fax: &nbsp; ${object.company_id.fax}\n"
+"            </div>\n"
+"        % endif\n"
+"        % if object.company_id.website:\n"
+"            <div>\n"
+"                <a href=\"${object.company_id.website}\">www.abakusitsolutions.eu</a>\n"
+"            </div>\n"
+"        %endif\n"
+"    </div>\n"
+"</div>\n"
+"            "
+msgstr "\n"
+"<div style=\"font-family: Arial, Helvetica, Calibri, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; padding: 0 5px 0 5px; link\">\n"
+"\n"
+"    <p>Cher client,</p>\n"
+"\n"
+"    <p>Vous trouverez ci-joint le rapport de service.</p>\n"
+"    \n"
+"    <p style=\"border-left: 2px solid #E97B2E; margin-left: 10px; padding-left: 5px;\">\n"
+"        &nbsp;&nbsp;<strong>INFORMATIONS</strong><br />\n"
+"        &nbsp;&nbsp;Client: <strong>${object.partner_id.name}</strong><br />\n"
+"        &nbsp;&nbsp;Personne de contact: <strong>${object.manager_id.name}</strong><br />\n"
+"    </p>  \n"
+"        \n"
+"    <p>Si vous avez la moindre question, n'hésitez pas à nous contacter.</p>\n"
+"    <p>Nous vous remercions pour votre aimable colaboration avec ${object.company_id.name or 'nous'}, votre spécialiste en comfort informatique</p>\n"
+"\n"
+"    <!-- SIGNATURE -->\n"
+"    <div style=\"width: 100%; margin: 0px; padding: 0px; background-color: #E97B2E; border-top-left-radius: 5px 5px; border-top-right-radius: 5px 5px; background-repeat: repeat no-repeat;\">\n"
+"        <h3 style=\"margin: 0px; padding: 10px 15px; font-size: 14px; color: #DDD;\">\n"
+"            <strong>${object.company_id.name}</strong></h3>\n"
+"    </div>\n"
+"    <div style=\"width: 100% -15px; margin: 0px; padding: 5px 15px; line-height: 16px; background-color: #DDD; border-bottom-right-radius: 5px 5px; border-bottom-left-radius: 5px 5px; \">\n"
+"        <span style=\"color: #222; margin-bottom: 5px; display: block; \">\n"
+"        % if object.company_id.street:\n"
+"            ${object.company_id.street}<br/>\n"
+"        % endif\n"
+"        % if object.company_id.street2:\n"
+"            ${object.company_id.street2}<br/>\n"
+"        % endif\n"
+"        % if object.company_id.city or object.company_id.zip:\n"
+"            ${object.company_id.zip} ${object.company_id.city}<br/>\n"
+"        % endif\n"
+"        % if object.company_id.country_id:\n"
+"            ${object.company_id.state_id and ('%s, ' % object.company_id.state_id.name) or ''} ${object.company_id.country_id.name or ''}<br/>\n"
+"        % endif\n"
+"        </span>\n"
+"        % if object.company_id.phone:\n"
+"            <div style=\"margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; \">\n"
+"                Téléphone: &nbsp; ${object.company_id.phone}\n"
+"            </div>\n"
+"        % endif\n"
+"         % if object.company_id.fax:\n"
+"            <div style=\"margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; \">\n"
+"                Fax: &nbsp; ${object.company_id.fax}\n"
+"            </div>\n"
+"        % endif\n"
+"        % if object.company_id.website:\n"
+"            <div>\n"
+"                <a href=\"${object.company_id.website}\">www.abakusitsolutions.eu</a>\n"
+"            </div>\n"
+"        %endif\n"
+"    </div>\n"
+"</div>\n"
+"            "
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -173,7 +284,7 @@ msgstr "Tickets par type de prestation"
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "Issues per stage"
-msgstr "Tickets par étappe"
+msgstr "Tickets par étape"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -195,7 +306,7 @@ msgstr "Dernière mise à jour le "
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "No SLA"
-msgstr "PAs de SLA"
+msgstr "Pas de SLA"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -221,11 +332,11 @@ msgstr "Heures prépayées"
 #: view:website:contract_report.report_contract_document
 msgid "Price"
 msgstr "Prix"
-type
+
 #. module: contract_report
 #: view:account.analytic.account:contract_report.view_account_analytic_account_sla_stats
 msgid "Print report"
-msgstr "Print report"
+msgstr "Imprimer le rapport"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -364,4 +475,3 @@ msgstr "min"
 #: view:website:contract_report.report_contract_document
 msgid "€, On site price:"
 msgstr "€, prix sur site :"
-
