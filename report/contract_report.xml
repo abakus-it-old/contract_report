@@ -23,6 +23,10 @@
 									border: 2px #F68B19 solid;
 									background-color: #F9F9F9;
 								}
+                                
+                                .abakusBorderedNoBackground {
+									border: 2px #F68B19 solid;
+								}
 
 								.abakusBackground {
 									background-color: #F68B19;
@@ -155,34 +159,42 @@
 
                         <div style="page-break-inside:avoid;">
                             <h2>Summary</h2>
-                            <table class="table abakusBordered">
+                            <table class="table table-condensed table-bordered">
                                 <tr>
-                                    <td>Working hours</td>
-                                    <td class="text-right"><span t-esc="o.decimal_to_hours(working_hours_total)"/></td>
+                                    <th style="width: 30%;">Service delivery</th>
+                                    <th class="text-right"><span t-esc="o.format_decimal_number(service_delivery_total)"/> €</th>
                                 </tr>
                                 <tr>
-                                    <td>On site support</td>
+                                    <td style="padding-left: 40px;">Working hours</td>
+                                    <td class="text-right">
+                                        <span t-esc="o.decimal_to_hours(working_hours_total)"/><br/>
+                                        equivalent to <span t-esc="int((o.quantity_max-working_hours_total)/o.quantity_max*100)"/>% of the prepaid units
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-left: 40px;">On site support</td>
                                     <td class="text-right"><span t-esc="on_site_total"/></td>
                                 </tr>
+                            </table>
+                            <table class="table table-condensed table-bordered"> 
                                 <tr>
-                                    <td>Service delivery</td>
-                                    <td class="text-right"><span t-esc="o.format_decimal_number(service_delivery_total)"/> €</td>
+                                    <th style="width: 30%;">Invoices</th>
+                                    <th class="text-right"><span t-esc="o.format_decimal_number(prepaid_instalment_total)"/> €</th>
                                 </tr>
-                                <tr>
-                                    <td>Invoices</td>
-                                    <td class="text-right"><span t-esc="o.format_decimal_number(prepaid_instalment_total)"/> €</td>
-                                </tr>
+                            </table> 
+                            <table class="table table-condensed abakusBorderedNoBackground" > 
                                 <tr style="font-size:15px;">
                                     <th>Balance</th>
                                     <t t-set="balance" t-value="prepaid_instalment_total - service_delivery_total"/>
                                     <th class="text-right">
-                                    <t t-if="balance&gt;=0">
-                                        In your favour
-                                    </t>
-                                    <t t-if="balance&lt;0">
-                                        In our favour
-                                    </t>    
-                                    <span t-esc="o.format_decimal_number(abs(balance))"/> €</th>
+                                        <t t-if="balance&gt;=0">
+                                            In your favour
+                                        </t>
+                                        <t t-if="balance&lt;0">
+                                            In our favour
+                                        </t>    
+                                        <span t-esc="o.format_decimal_number(abs(balance))"/> €
+                                    </th>
                                 </tr>
                             </table> 
                             <small>All prices plus VAT, where applicable.</small><br/>
@@ -229,7 +241,7 @@
                                 <tr>
                                     <th>Reaction time: (Compliance 85%)</th>
                                     <td> SD : reaction per email or telephone<br/>
-                                        OD : technician present on site<br/>
+                                        OS : technician present on site<br/>
                                         Reaction time are only available  valid for customers with SLA contracts.
                                     </td>
                                 </tr>
@@ -239,33 +251,11 @@
                         <t t-if="o.isStatistics()">
                             <div style="page-break-inside:avoid;">
                                 <h1 class="text-center text-uppercase">Statistics</h1>
-                                <table class="table">
-                                    <tr>
-                                        <td>
-                                            <h2>Issues per stage</h2>
-                                            <t t-foreach="o.dictionary_to_list(o._issue_per_stage())" t-as="stage">
-                                                <span t-esc="stage[0]"/>: <span t-esc="stage[1]"/>
-                                                <br/>
-                                            </t>
-                                        </td>
-                                        <td class="text-right"><img t-att-src="o.issue_per_stage" style="max-height:200px;"/></td>
-                                    </tr>
-                                    <t t-if="o.sla_bool">
-                                        <tr>
-                                            <td>
-                                                <h2>SLA</h2>
-                                                <t t-foreach="o.dictionary_to_list(o._issue_per_result())" t-as="result">
-                                                    <span t-esc="result[0]"/>: <span t-esc="result[1]"/>
-                                                    <br/>
-                                                </t>
-                                                Average reaction time: <t t-if="int(o.average_reaction_time)==0">0-1</t><t t-if="int(o.average_reaction_time)>0"><span t-esc="int(o.average_reaction_time)"/></t> min
-                                            </td>
-                                            <td class="text-right"><img t-att-src="o.issue_per_result" style="max-height:200px"/></td>
-                                        </tr>
-                                    </t>
-                                    <tr>
-                                        <td>
-                                            <h2>Issues per service delivery type</h2>
+                                <h2 class="text-left">Requests for support (Tickets)</h2>
+                                <table class="table abakusBorderedNoBackground">
+                                     <tr>
+                                         <td style="vertical-align: middle;">
+                                            <h3>Distribution OS/SD*</h3>
                                             <t t-set="types" t-value="o._issue_per_type_detail()"/>
                                             <table class="table table-condensed table-bordered">
                                                 <tr>
@@ -273,24 +263,6 @@
                                                     <th>SD</th>
                                                     <th>OS</th>
                                                     <th>Total</th>
-                                                </tr>
-                                                <tr>
-                                                    <th>Issues</th>
-                                                    <td><span t-esc="types['SD']['ticketSum']"/></td>
-                                                    <td><span t-esc="types['OS']['ticketSum']"/></td>
-                                                    <td><span t-esc="types['OS']['ticketSum']+types['SD']['ticketSum']"/></td>
-                                                </tr>                                               
-                                                <tr>
-                                                    <th>Time</th>
-                                                    <td><span t-esc="o.decimal_to_hours(types['SD']['timeSum'])"/></td>
-                                                    <td><span t-esc="o.decimal_to_hours(types['OS']['timeSum'])"/></td>
-                                                    <td><span t-esc="o.decimal_to_hours(types['OS']['timeSum']+types['SD']['timeSum'])"/></td>
-                                                </tr>
-                                                 <tr>
-                                                    <th>Price</th>
-                                                    <td><span t-esc="o.format_decimal_number(types['SD']['priceSum'])"/> €</td>
-                                                    <td><span t-esc="o.format_decimal_number(types['OS']['priceSum'])"/> €</td>
-                                                    <td><span t-esc="o.format_decimal_number(types['OS']['priceSum']+types['SD']['priceSum'])"/> €</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Work logs</th>
@@ -306,22 +278,44 @@
                                                             <br/>
                                                         </t>
                                                     </td>
-                                                    <td></td>
+                                                    <td><span t-esc="types['OS']['workLogsSum']+types['SD']['workLogsSum']"/></td>
+                                                </tr>                                     
+                                                <tr>
+                                                    <th>Time</th>
+                                                    <td><span t-esc="o.decimal_to_hours(types['SD']['timeSum'])"/></td>
+                                                    <td><span t-esc="o.decimal_to_hours(types['OS']['timeSum'])"/></td>
+                                                    <td><span t-esc="o.decimal_to_hours(types['OS']['timeSum']+types['SD']['timeSum'])"/></td>
+                                                </tr>
+                                                 <tr>
+                                                    <th>Price</th>
+                                                    <td><span t-esc="o.format_decimal_number(types['SD']['priceSum'])"/> €</td>
+                                                    <td><span t-esc="o.format_decimal_number(types['OS']['priceSum'])"/> €</td>
+                                                    <td><span t-esc="o.format_decimal_number(types['OS']['priceSum']+types['SD']['priceSum'])"/> €</td>
                                                 </tr>
                                             </table>
+                                            * Based on <span t-esc="types['ticketSum']"/> tickets
                                         </td>
-                                        <td class="text-right"><img t-att-src="o.issue_per_type" style="max-height:200px"/></td>
+                                     <td class="text-right" style="vertical-align: middle;"><img t-att-src="o.issue_per_type" style="max-height:200px"/></td>
                                     </tr>
                                     <tr>
-                                        <td>
-                                            <h2>Issues per priority</h2>
-                                            <t t-foreach="o.dictionary_to_list(o._issue_per_priority())" t-as="priority">
-                                                <span t-esc="priority[0]"/>: <span t-esc="priority[1]"/>
-                                                <br/>
-                                            </t>
+                                        <td class="text-center" style="vertical-align: middle;">
+                                            <h3>Status</h3>
+                                            <img t-att-src="o.issue_per_stage" style="max-height:200px;"/>
                                         </td>
-                                        <td class="text-right"><img t-att-src="o.issue_per_priority" style="max-height:200px"/></td>
+                                        <td class="text-center" style="vertical-align: middle;">
+                                            <h3>Priority</h3>
+                                            <img t-att-src="o.issue_per_priority" style="max-height:200px"/>
+                                        </td>
                                     </tr>
+                                    <t t-if="o.sla_bool">
+                                        <tr>
+                                            <td class="text-center" colspan="2" style="vertical-align: middle;">
+                                                <h3>Service Level Agreement Measurement</h3>
+                                                <h4>Average reaction time: <t t-if="int(o.average_reaction_time)==0">0-1</t><t t-if="int(o.average_reaction_time)>0"><span t-esc="int(o.average_reaction_time)"/></t> min</h4>
+                                                <img t-att-src="o.issue_per_result" style="max-height:200px"/>
+                                            </td>
+                                        </tr>
+                                    </t>
                                 </table> 
                             </div>
                         </t>

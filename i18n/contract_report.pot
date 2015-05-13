@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0-20150330\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-12 12:04+0000\n"
-"PO-Revision-Date: 2015-05-12 12:04+0000\n"
+"POT-Creation-Date: 2015-05-13 10:07+0000\n"
+"PO-Revision-Date: 2015-05-13 10:07+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -81,6 +81,16 @@ msgstr ""
 #. module: contract_report
 #: model:email.template,subject:contract_report.email_template_service_report
 msgid "${object.company_id.name|safe}: Service Report"
+msgstr ""
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "% of the prepaid units"
+msgstr ""
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "* Based on"
 msgstr ""
 
 #. module: contract_report
@@ -178,6 +188,11 @@ msgid "Description"
 msgstr ""
 
 #. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Distribution OS/SD*"
+msgstr ""
+
+#. module: contract_report
 #: field:contract.report,end_date:0
 #: field:contract.report.wizard,end_date:0
 msgid "End date"
@@ -231,26 +246,6 @@ msgstr ""
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
-msgid "Issues"
-msgstr ""
-
-#. module: contract_report
-#: view:website:contract_report.report_contract_document
-msgid "Issues per priority"
-msgstr ""
-
-#. module: contract_report
-#: view:website:contract_report.report_contract_document
-msgid "Issues per service delivery type"
-msgstr ""
-
-#. module: contract_report
-#: view:website:contract_report.report_contract_document
-msgid "Issues per stage"
-msgstr ""
-
-#. module: contract_report
-#: view:website:contract_report.report_contract_document
 msgid "Kind"
 msgstr ""
 
@@ -283,7 +278,7 @@ msgstr ""
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
-msgid "OD : technician present on site"
+msgid "OS : technician present on site"
 msgstr ""
 
 #. module: contract_report
@@ -343,6 +338,11 @@ msgstr ""
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
+msgid "Requests for support (Tickets)"
+msgstr ""
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
 msgid "SD : reaction per email or telephone"
 msgstr ""
 
@@ -369,6 +369,11 @@ msgstr ""
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "Service Level Agreement"
+msgstr ""
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Service Level Agreement Measurement"
 msgstr ""
 
 #. module: contract_report
@@ -416,6 +421,11 @@ msgstr ""
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
+msgid "Status"
+msgstr ""
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
 msgid "Summary"
 msgstr ""
 
@@ -451,7 +461,17 @@ msgstr ""
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
+msgid "equivalent to"
+msgstr ""
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
 msgid "min"
+msgstr ""
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "tickets"
 msgstr ""
 
 #. module: contract_report

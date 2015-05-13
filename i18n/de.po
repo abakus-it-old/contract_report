@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0-20150330\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-12 08:19+0000\n"
-"PO-Revision-Date: 2015-05-12 08:19+0000\n"
+"POT-Creation-Date: 2015-05-13 10:08+0000\n"
+"PO-Revision-Date: 2015-05-13 10:08+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -79,7 +79,7 @@ msgstr "\n"
 "    <p>anbei Ihr Dienstleistungsbericht</p>\n"
 "    \n"
 "    <p style=\"border-left: 2px solid #E97B2E; margin-left: 10px; padding-left: 5px;\">\n"
-"        &nbsp;&nbsp;<strong>INFORMATIONEN</strong><br />\n"
+"        &nbsp;&nbsp;<strong>INFORMATION</strong><br />\n"
 "        &nbsp;&nbsp;Kunde: <strong>${object.partner_id.name}</strong><br />\n"
 "        &nbsp;&nbsp;Ansprechpartner: <strong>${object.manager_id.name}</strong><br />\n"
 "    </p>  \n"
@@ -134,7 +134,17 @@ msgstr "\"On-Site\" Arbeiten vor-Ort beim Kunden / auf Termin"
 #. module: contract_report
 #: model:email.template,subject:contract_report.email_template_service_report
 msgid "${object.company_id.name|safe}: Service Report"
-msgstr "${object.company_id.name|safe}: Service Report"
+msgstr "${object.company_id.name|safe}: Dienstleistungsbericht"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "% of the prepaid units"
+msgstr "% der vertraglichen Mindestleistung"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "* Based on"
+msgstr "* Basierend auf"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -231,6 +241,11 @@ msgid "Description"
 msgstr "Beschreibung"
 
 #. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Distribution OS/SD*"
+msgstr "Verteilung OS/SD*"
+
+#. module: contract_report
 #: field:contract.report,end_date:0
 #: field:contract.report.wizard,end_date:0
 msgid "End date"
@@ -284,26 +299,6 @@ msgstr "Rechnungen Total"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
-msgid "Issues"
-msgstr "Tickets"
-
-#. module: contract_report
-#: view:website:contract_report.report_contract_document
-msgid "Issues per priority"
-msgstr "Tickets pro Priorität"
-
-#. module: contract_report
-#: view:website:contract_report.report_contract_document
-msgid "Issues per service delivery type"
-msgstr "Tickets pro Dienstleistungstyp"
-
-#. module: contract_report
-#: view:website:contract_report.report_contract_document
-msgid "Issues per stage"
-msgstr "Tickets pro Phase"
-
-#. module: contract_report
-#: view:website:contract_report.report_contract_document
 msgid "Kind"
 msgstr "Art"
 
@@ -336,8 +331,8 @@ msgstr "Normal"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
-msgid "OD : technician present on site"
-msgstr "OD : Techniker vor-Ort beim Kunden"
+msgid "OS : technician present on site"
+msgstr "OS : Techniker vor-Ort beim Kunden"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -396,6 +391,11 @@ msgstr "Referenz"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
+msgid "Requests for support (Tickets)"
+msgstr "Supportanfragen (Tickets)"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
 msgid "SD : reaction per email or telephone"
 msgstr "SD : meldet sich per Email oder Telefon"
 
@@ -417,17 +417,22 @@ msgstr "Send by Email"
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "Service Desk accessible by calling +32 87 59 35 58 or per email at support@abakusitsolutions.eu"
-msgstr "Desk / +32.87593558 oder per Email an support@abakusitsolutions.eu"
+msgstr "Service Desk / +32.87593558 oder per Email an support@abakusitsolutions.eu"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "Service Level Agreement"
-msgstr "Service Level Agreement"
+msgstr "Dienstleistungsvereinbarung (Service Level Agreement)"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Service Level Agreement Measurement"
+msgstr "Messung der Dienstleistungsvereinbarung (SLA)"
 
 #. module: contract_report
 #: view:account.analytic.account:contract_report.view_account_analytic_account_sla_stats
 msgid "Service Report"
-msgstr "Service Report"
+msgstr "Dienstleistungsbericht"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -452,7 +457,7 @@ msgstr "Dienstleistungstyp"
 #. module: contract_report
 #: model:email.template,report_name:contract_report.email_template_service_report
 msgid "ServiceReport_${(object.name or '').replace('/','_').replace('*','_').replace(':','_')}"
-msgstr "ServiceReport_${(object.name or '').replace('/','_').replace('*','_').replace(':','_')}"
+msgstr "Dienstleistungsbericht_${(object.name or '').replace('/','_').replace('*','_').replace(':','_')}"
 
 #. module: contract_report
 #: field:contract.report,start_date:0
@@ -466,6 +471,11 @@ msgstr "Anfangsdatum"
 #: view:website:contract_report.report_contract_document
 msgid "Statistics"
 msgstr "Statistiken"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Status"
+msgstr "Status"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -485,7 +495,7 @@ msgstr "Zeit"
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "Total"
-msgstr "Bruttobetrag"
+msgstr "Total"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -495,7 +505,7 @@ msgstr "Support"
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "Work logs"
-msgstr "Dienstleistungen"
+msgstr "Arbeitsprotokolle"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -504,8 +514,18 @@ msgstr "Geleistete Arbeitszeit"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
+msgid "equivalent to"
+msgstr "entspricht"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
 msgid "min"
 msgstr "min"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "tickets"
+msgstr "Tickets"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
