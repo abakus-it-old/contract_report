@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0-20150330\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-13 10:08+0000\n"
-"PO-Revision-Date: 2015-05-13 10:08+0000\n"
+"POT-Creation-Date: 2015-05-18 09:04+0000\n"
+"PO-Revision-Date: 2015-05-18 09:04+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -148,18 +148,38 @@ msgstr "* Basierend auf"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
+msgid "A priority"
+msgstr "Eine Priorität"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "A responsible"
+msgstr "Einen Verantwortlichen"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "A start, assignment and end time"
+msgstr "Eine Start-, Zuweisungs- und Endzeit"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "A status"
+msgstr "Ein Status"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
 msgid "All prices plus VAT, where applicable."
 msgstr "Alle Preise zzgl. MWST, soweit anwendbar."
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "Amount"
-msgstr "Betrag"
+msgstr "Total"
 
 #. module: contract_report
 #: model:ir.model,name:contract_report.model_account_analytic_account
 msgid "Analytic Account"
-msgstr "Kostenstellenkonto"
+msgstr "Analytic Account"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -189,13 +209,18 @@ msgstr "Compose Email"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
+msgid "Contains:"
+msgstr "Beinhaltet:"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
 msgid "Contract"
 msgstr "Vertrag"
 
 #. module: contract_report
 #: view:account.analytic.account:contract_report.view_account_analytic_account_sla_stats
 msgid "Contract Information"
-msgstr "Vertragsinformationen"
+msgstr "Vertragsinformation"
 
 #. module: contract_report
 #: model:ir.actions.act_window,name:contract_report.action_contract_report_wizard
@@ -218,6 +243,11 @@ msgstr "Contract Timesheet Report"
 #: field:contract.report.wizard,create_uid:0
 msgid "Created by"
 msgstr "Created by"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Created by:"
+msgstr "Erstellt durch:"
 
 #. module: contract_report
 #: field:contract.report,create_date:0
@@ -321,6 +351,11 @@ msgstr "Low"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
+msgid "Monitoring"
+msgstr "Monitoring"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
 msgid "No SLA"
 msgstr "Kein SLA"
 
@@ -366,8 +401,13 @@ msgstr "Priorität"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
+msgid "Proactive maintenance"
+msgstr "Proaktive Wartung"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
 msgid "Quantity"
-msgstr "Anzahl"
+msgstr "Menge"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -391,11 +431,6 @@ msgstr "Referenz"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
-msgid "Requests for support (Tickets)"
-msgstr "Supportanfragen (Tickets)"
-
-#. module: contract_report
-#: view:website:contract_report.report_contract_document
 msgid "SD : reaction per email or telephone"
 msgstr "SD : meldet sich per Email oder Telefon"
 
@@ -403,6 +438,11 @@ msgstr "SD : meldet sich per Email oder Telefon"
 #: view:website:contract_report.report_contract_document
 msgid "SLA"
 msgstr "SLA"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "SLA Condition Rules"
+msgstr "SLA - Vertragsregeln"
 
 #. module: contract_report
 #: view:contract.report.wizard:contract_report.view_contract_report_wizard
@@ -423,11 +463,6 @@ msgstr "Service Desk / +32.87593558 oder per Email an support@abakusitsolutions.
 #: view:website:contract_report.report_contract_document
 msgid "Service Level Agreement"
 msgstr "Dienstleistungsvereinbarung (Service Level Agreement)"
-
-#. module: contract_report
-#: view:website:contract_report.report_contract_document
-msgid "Service Level Agreement Measurement"
-msgstr "Messung der Dienstleistungsvereinbarung (SLA)"
 
 #. module: contract_report
 #: view:account.analytic.account:contract_report.view_account_analytic_account_sla_stats
@@ -468,7 +503,6 @@ msgstr "Anfangsdatum"
 #. module: contract_report
 #: field:contract.report,statistics:0
 #: field:contract.report.wizard,statistics:0
-#: view:website:contract_report.report_contract_document
 msgid "Statistics"
 msgstr "Statistiken"
 
@@ -479,13 +513,23 @@ msgstr "Status"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
-msgid "Summary"
-msgstr "Zusammenfassung"
+msgid "Support request (Service Desk)"
+msgstr "Supportanfrage (Service Desk)"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "The present report is not an invoice."
 msgstr "Der vorliegende Bericht ist keine Rechnung."
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Ticket"
+msgstr "Ticket"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Tickets Statistics"
+msgstr "Statistiken der Tickets"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -495,7 +539,7 @@ msgstr "Zeit"
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "Total"
-msgstr "Total"
+msgstr "Gesamter Zahlungsbetrag:"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -505,7 +549,7 @@ msgstr "Support"
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "Work logs"
-msgstr "Arbeitsprotokolle"
+msgstr "Dienstleistungen"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document

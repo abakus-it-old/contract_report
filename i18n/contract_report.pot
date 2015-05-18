@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0-20150330\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-13 10:07+0000\n"
-"PO-Revision-Date: 2015-05-13 10:07+0000\n"
+"POT-Creation-Date: 2015-05-18 09:04+0000\n"
+"PO-Revision-Date: 2015-05-18 09:04+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -95,6 +95,26 @@ msgstr ""
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
+msgid "A priority"
+msgstr ""
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "A responsible"
+msgstr ""
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "A start, assignment and end time"
+msgstr ""
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "A status"
+msgstr ""
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
 msgid "All prices plus VAT, where applicable."
 msgstr ""
 
@@ -136,6 +156,11 @@ msgstr ""
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
+msgid "Contains:"
+msgstr ""
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
 msgid "Contract"
 msgstr ""
 
@@ -164,6 +189,11 @@ msgstr ""
 #: field:contract.report,create_uid:0
 #: field:contract.report.wizard,create_uid:0
 msgid "Created by"
+msgstr ""
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Created by:"
 msgstr ""
 
 #. module: contract_report
@@ -268,6 +298,11 @@ msgstr ""
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
+msgid "Monitoring"
+msgstr ""
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
 msgid "No SLA"
 msgstr ""
 
@@ -313,6 +348,11 @@ msgstr ""
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
+msgid "Proactive maintenance"
+msgstr ""
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
 msgid "Quantity"
 msgstr ""
 
@@ -338,17 +378,17 @@ msgstr ""
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
-msgid "Requests for support (Tickets)"
-msgstr ""
-
-#. module: contract_report
-#: view:website:contract_report.report_contract_document
 msgid "SD : reaction per email or telephone"
 msgstr ""
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "SLA"
+msgstr ""
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "SLA Condition Rules"
 msgstr ""
 
 #. module: contract_report
@@ -369,11 +409,6 @@ msgstr ""
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "Service Level Agreement"
-msgstr ""
-
-#. module: contract_report
-#: view:website:contract_report.report_contract_document
-msgid "Service Level Agreement Measurement"
 msgstr ""
 
 #. module: contract_report
@@ -415,7 +450,6 @@ msgstr ""
 #. module: contract_report
 #: field:contract.report,statistics:0
 #: field:contract.report.wizard,statistics:0
-#: view:website:contract_report.report_contract_document
 msgid "Statistics"
 msgstr ""
 
@@ -426,12 +460,22 @@ msgstr ""
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
-msgid "Summary"
+msgid "Support request (Service Desk)"
 msgstr ""
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "The present report is not an invoice."
+msgstr ""
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Ticket"
+msgstr ""
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Tickets Statistics"
 msgstr ""
 
 #. module: contract_report

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0-20150330\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-13 10:08+0000\n"
-"PO-Revision-Date: 2015-05-13 10:08+0000\n"
+"POT-Creation-Date: 2015-05-18 09:04+0000\n"
+"PO-Revision-Date: 2015-05-18 09:04+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -148,6 +148,26 @@ msgstr "* Basé sur "
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
+msgid "A priority"
+msgstr "Une priorité"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "A responsible"
+msgstr "Un responsable"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "A start, assignment and end time"
+msgstr "Une date de début, d'assignation et de fin"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "A status"
+msgstr "Un statut"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
 msgid "All prices plus VAT, where applicable."
 msgstr "Tous les prix hors TVA, si applicable."
 
@@ -174,7 +194,7 @@ msgstr "Balance"
 #. module: contract_report
 #: view:contract.report.wizard:contract_report.view_contract_report_wizard
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annuler"
 
 #. module: contract_report
 #: view:account.analytic.account:contract_report.view_account_analytic_account_sla_stats
@@ -186,6 +206,11 @@ msgstr "Change settings"
 #, python-format
 msgid "Compose Email"
 msgstr "Compose Email"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Contains:"
+msgstr "Contient:"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -218,6 +243,11 @@ msgstr "Rapport de prestations de service"
 #: field:contract.report.wizard,create_uid:0
 msgid "Created by"
 msgstr "Créé par"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Created by:"
+msgstr "Créé par:"
 
 #. module: contract_report
 #: field:contract.report,create_date:0
@@ -295,7 +325,7 @@ msgstr "Factures"
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "Invoices total"
-msgstr "Factures (total)"
+msgstr "Factures total"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -318,6 +348,11 @@ msgstr "Dernière mise à jour le "
 #: view:website:contract_report.report_contract_document
 msgid "Low"
 msgstr "Low"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Monitoring"
+msgstr "Monitoring"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -366,6 +401,11 @@ msgstr "Priorité"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
+msgid "Proactive maintenance"
+msgstr "Maintenance proactive"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
 msgid "Quantity"
 msgstr "Quantité"
 
@@ -391,11 +431,6 @@ msgstr "Référence"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
-msgid "Requests for support (Tickets)"
-msgstr "Demandes de support (tickets)"
-
-#. module: contract_report
-#: view:website:contract_report.report_contract_document
 msgid "SD : reaction per email or telephone"
 msgstr "SD : réaction par email ou téléphone "
 
@@ -403,6 +438,11 @@ msgstr "SD : réaction par email ou téléphone "
 #: view:website:contract_report.report_contract_document
 msgid "SLA"
 msgstr "SLA"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "SLA Condition Rules"
+msgstr "Règles SLA"
 
 #. module: contract_report
 #: view:contract.report.wizard:contract_report.view_contract_report_wizard
@@ -425,11 +465,6 @@ msgid "Service Level Agreement"
 msgstr "Contrat de niveau de service (Service Level Agreement)"
 
 #. module: contract_report
-#: view:website:contract_report.report_contract_document
-msgid "Service Level Agreement Measurement"
-msgstr "Mesure du contrat de niveau de service (SLA)"
-
-#. module: contract_report
 #: view:account.analytic.account:contract_report.view_account_analytic_account_sla_stats
 msgid "Service Report"
 msgstr "Rapport de service"
@@ -437,12 +472,12 @@ msgstr "Rapport de service"
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "Service delivery"
-msgstr "Services prestés"
+msgstr "Service presté"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "Service delivery total"
-msgstr "Services prestés (total)"
+msgstr "Service total presté"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -468,7 +503,6 @@ msgstr "Date de début"
 #. module: contract_report
 #: field:contract.report,statistics:0
 #: field:contract.report.wizard,statistics:0
-#: view:website:contract_report.report_contract_document
 msgid "Statistics"
 msgstr "Statistiques"
 
@@ -479,13 +513,23 @@ msgstr "Statut"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
-msgid "Summary"
-msgstr "Résumé"
+msgid "Support request (Service Desk)"
+msgstr "Demande de support (Service Desk)"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "The present report is not an invoice."
 msgstr "Le présent rapport n'est pas une facture."
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Ticket"
+msgstr "Ticket"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Tickets Statistics"
+msgstr "Statistiques des tickets"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -495,7 +539,7 @@ msgstr "Temps"
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "Total"
-msgstr "Total"
+msgstr "Total à payer"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -505,7 +549,7 @@ msgstr "Utilisateur"
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "Work logs"
-msgstr "Journaux de travail"
+msgstr "Prestations"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document

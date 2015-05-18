@@ -158,7 +158,7 @@
                         </div>
 
                         <div style="page-break-inside:avoid;">
-                            <h2>Summary</h2>
+                            <h2>Balance</h2>
                             <table class="table table-condensed table-bordered">
                                 <tr>
                                     <th style="width: 30%;">Service delivery</th>
@@ -214,29 +214,7 @@
                                 </tr>
                                 <tr>
                                     <th>SLA</th>
-                                    <td>Service Level Agreement
-                                         <t t-if="o.sla_bool">
-                                             <br/><br/>
-                                             <table class="table table-condensed table-bordered table-striped">
-                                                 <tr>
-                                                     <th>Service type</th>
-                                                     <th>Priority</th>
-                                                     <th>Reaction time in minutes</th>
-                                                 </tr>
-                                                 <t t-foreach="o.sla_id.sla_rule_ids" t-as="rule">
-                                                     <tr>
-                                                        <td class="text-uppercase"><span t-esc="rule.service_type"/></td>
-                                                         <td>
-                                                             <t t-if="rule.issue_priority == '0'">Low</t>
-                                                             <t t-if="rule.issue_priority == '1'">Normal</t>
-                                                             <t t-if="rule.issue_priority == '2'">High</t>
-                                                         </td>
-                                                         <td><span t-esc="rule.action_time"/></td>
-                                                     </tr>
-                                                 </t>
-                                             </table>
-                                         </t>
-                                    </td>
+                                    <td>Service Level Agreement</td>
                                 </tr>
                                 <tr>
                                     <th>Reaction time: (Compliance 85%)</th>
@@ -245,13 +223,30 @@
                                         Reaction time are only available  valid for customers with SLA contracts.
                                     </td>
                                 </tr>
+                                <tr>
+                                    <th>Ticket</th>
+                                    <td>
+                                        Created by:
+                                        <ul style="padding-left: 40px;">
+                                          <li>Proactive maintenance</li>
+                                          <li>Monitoring</li>
+                                          <li>Support request (Service Desk)</li>
+                                        </ul>
+                                        Contains:
+                                        <ul style="padding-left: 40px;">
+                                          <li>A start, assignment and end time</li>
+                                          <li>A responsible</li>
+                                          <li>A priority</li>
+                                          <li>A status</li>
+                                        </ul>
+                                    </td>
+                                </tr>
                             </table>
                         </div>
                         
                         <t t-if="o.isStatistics()">
                             <div style="page-break-inside:avoid;">
-                                <h1 class="text-center text-uppercase">Statistics</h1>
-                                <h2 class="text-left">Requests for support (Tickets)</h2>
+                                <h1 class="text-center text-uppercase">Tickets Statistics</h1>
                                 <table class="table abakusBorderedNoBackground">
                                      <tr>
                                          <td style="vertical-align: middle;">
@@ -297,6 +292,35 @@
                                         </td>
                                      <td class="text-right" style="vertical-align: middle;"><img t-att-src="o.issue_per_type" style="max-height:200px"/></td>
                                     </tr>
+                                   
+                                    <t t-if="o.sla_bool">
+                                        <tr>                                      
+                                            <td style="vertical-align: middle;">
+                                                <h3>SLA Condition Rules</h3>
+                                                <table class="table table-condensed table-bordered table-striped">
+                                                 <tr>
+                                                     <th>Service type</th>
+                                                     <th>Priority</th>
+                                                     <th>Reaction time in minutes</th>
+                                                 </tr>
+                                                 <t t-foreach="o.sla_id.sla_rule_ids" t-as="rule">
+                                                     <tr>
+                                                        <td class="text-uppercase"><span t-esc="rule.service_type"/></td>
+                                                         <td>
+                                                             <t t-if="rule.issue_priority == '0'">Low</t>
+                                                             <t t-if="rule.issue_priority == '1'">Normal</t>
+                                                             <t t-if="rule.issue_priority == '2'">High</t>
+                                                         </td>
+                                                         <td><span t-esc="rule.action_time"/></td>
+                                                     </tr>
+                                                 </t>
+                                             </table>
+                                             <h4>Average reaction time: <t t-if="int(o.average_reaction_time)==0">0-1</t><t t-if="int(o.average_reaction_time)>0"><span t-esc="int(o.average_reaction_time)"/></t> min</h4>
+                                            </td>
+                                            <td class="text-right" style="vertical-align: middle;"><img t-att-src="o.issue_per_result" style="max-height:200px"/></td>
+                                        </tr>
+                                    </t>
+                                    
                                     <tr>
                                         <td class="text-center" style="vertical-align: middle;">
                                             <h3>Status</h3>
@@ -307,15 +331,6 @@
                                             <img t-att-src="o.issue_per_priority" style="max-height:200px"/>
                                         </td>
                                     </tr>
-                                    <t t-if="o.sla_bool">
-                                        <tr>
-                                            <td class="text-center" colspan="2" style="vertical-align: middle;">
-                                                <h3>Service Level Agreement Measurement</h3>
-                                                <h4>Average reaction time: <t t-if="int(o.average_reaction_time)==0">0-1</t><t t-if="int(o.average_reaction_time)>0"><span t-esc="int(o.average_reaction_time)"/></t> min</h4>
-                                                <img t-att-src="o.issue_per_result" style="max-height:200px"/>
-                                            </td>
-                                        </tr>
-                                    </t>
                                 </table> 
                             </div>
                         </t>
