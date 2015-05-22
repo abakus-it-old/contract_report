@@ -8,6 +8,8 @@
 			report_type="qweb-pdf"
 			file="contract_report" 
 			name="contract_report.report_contract"
+            attachment_use="True"
+            attachment='"ServiceReport-"+object.name.replace(" ","").replace("*","")+"("+time.strftime("%Y%m%d_%H%M%S")+").pdf"'
 		/>
        
 		<template id="report_contract_document">
@@ -50,23 +52,23 @@
 								<td><span t-field="o.name"/> (<span t-esc="o.format_date(o.date_start)"/> - <span t-esc="o.format_date(o.date)"/>)</td>
 							</tr>
 							<tr>
-								<th>Custommer</th>
-								<td><span t-field="o.partner_id.name"/></td>
+								<th>Customer</th>
+								<td><t t-if="o.partner_id.parent_id"><span t-esc="o.partner_id.parent_id.name"/></t><t t-if="not o.partner_id.parent_id"><span t-esc="o.partner_id.name"/></t></td>
 							</tr>
 							<tr>
 								<th>Prepaid units</th>
-								<td><span t-esc="o.decimal_to_hours(o.quantity_max)"/> H (Unit price: <span t-esc="o.format_decimal_number(o.timesheet_product_price)"/> €, On site price: <span t-esc="o.format_decimal_number(o.on_site_product.lst_price)"/> €)</td>
+								<td><span t-esc="o.decimal_to_hours(o.quantity_max)"/> hours for a total of <span t-esc="o.format_decimal_number(o.quantity_max*o.timesheet_product_price)"/>  € (Unit price: <span t-esc="o.format_decimal_number(o.timesheet_product_price)"/> €, On site price: <span t-esc="o.format_decimal_number(o.on_site_product.lst_price)"/> €)</td>
 							</tr>
                             <tr>
 								<th>SLA</th>
 								<td><t t-if="o.sla_bool"><span t-esc="o.sla_name"/></t><t t-if="not o.sla_bool">No SLA</t></td>
 							</tr>
 							<tr>
-								<th>Period</th>
+								<th>Reporting period</th>
 								<td><span t-esc="o.get_report_interval(o.date_start,o.date)"/></td>
 							</tr>
 							<tr>
-								<th>Date</th>
+								<th>Creation date</th>
 								<td><span t-esc="time.strftime('%d-%m-%Y')"/></td>
 							</tr>
 						</table>
@@ -78,8 +80,8 @@
                                 <tr class="abakusBordered">
                                     <th>Date</th>
                                     <th>Description</th>
-                                    <th style="width: 130px;">User</th>
-                                    <th>Kind</th>
+                                    <th style="width: 130px;">Support</th>
+                                    <th>Type</th>
                                     <th>Quantity</th>
                                     <th>Invoiceable</th>
                                     <th class="text-right" style="width: 90px;">Amount</th>
@@ -126,7 +128,7 @@
                         </div>
                         
                         <div style="page-break-inside:avoid;">
-                            <h2>Invoices</h2>
+                            <h2>Issued invoices</h2>
                             <table class="table table-condensed table-striped">
                                 <tr class="abakusBordered">
                                     <th>Date</th>
@@ -151,7 +153,7 @@
                             </table>
                             <table class="table">
                                 <tr class="abakusBordered">
-                                    <th>Invoices total</th>
+                                    <th>Invoiced amount</th>
                                     <th class="text-right"><span t-esc="o.format_decimal_number(prepaid_instalment_total)"/> €</th>
                                 </tr>
                             </table>
@@ -168,7 +170,7 @@
                                     <td style="padding-left: 40px;">Working hours</td>
                                     <td class="text-right">
                                         <span t-esc="o.decimal_to_hours(working_hours_total)"/><br/>
-                                        equivalent to <span t-esc="int((o.quantity_max-working_hours_total)/o.quantity_max*100)"/>% of the prepaid units
+                                        equivalent to <span t-esc="int((100-(o.quantity_max-working_hours_total))/o.quantity_max*100)"/>% of the prepaid units
                                     </td>
                                 </tr>
                                 <tr>
@@ -178,7 +180,7 @@
                             </table>
                             <table class="table table-condensed table-bordered"> 
                                 <tr>
-                                    <th style="width: 30%;">Invoices</th>
+                                    <th style="width: 30%;">Invoiced amount</th>
                                     <th class="text-right"><span t-esc="o.format_decimal_number(prepaid_instalment_total)"/> €</th>
                                 </tr>
                             </table> 
@@ -206,7 +208,7 @@
                             <table class="table table-condensed table-bordered">
                                 <tr>
                                     <th>SD</th>
-                                    <td>Service Desk accessible by calling +32 87 59 35 58 or per email at support@abakusitsolutions.eu</td>
+                                    <td>Service Desk accessible by calling +32 87 59 35 58 / +352 20 88 20 58 or per email at support@abakusitsolutions.eu</td>
                                 </tr>
                                 <tr>
                                     <th>OS</th>

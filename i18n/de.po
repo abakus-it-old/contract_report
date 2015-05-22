@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0-20150330\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-18 09:04+0000\n"
-"PO-Revision-Date: 2015-05-18 09:04+0000\n"
+"POT-Creation-Date: 2015-05-22 13:42+0000\n"
+"PO-Revision-Date: 2015-05-22 13:42+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -79,7 +79,7 @@ msgstr "\n"
 "    <p>anbei Ihr Dienstleistungsbericht</p>\n"
 "    \n"
 "    <p style=\"border-left: 2px solid #E97B2E; margin-left: 10px; padding-left: 5px;\">\n"
-"        &nbsp;&nbsp;<strong>INFORMATION</strong><br />\n"
+"        &nbsp;&nbsp;<strong>INFORMATIONEN</strong><br />\n"
 "        &nbsp;&nbsp;Kunde: <strong>${object.partner_id.name}</strong><br />\n"
 "        &nbsp;&nbsp;Ansprechpartner: <strong>${object.manager_id.name}</strong><br />\n"
 "    </p>  \n"
@@ -179,7 +179,7 @@ msgstr "Total"
 #. module: contract_report
 #: model:ir.model,name:contract_report.model_account_analytic_account
 msgid "Analytic Account"
-msgstr "Analytic Account"
+msgstr "Kostenkonto"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -257,7 +257,12 @@ msgstr "Created on"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
-msgid "Custommer"
+msgid "Creation date"
+msgstr "Erstellt am"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Customer"
 msgstr "Kunde"
 
 #. module: contract_report
@@ -280,11 +285,6 @@ msgstr "Verteilung OS/SD*"
 #: field:contract.report.wizard,end_date:0
 msgid "End date"
 msgstr "Enddatum"
-
-#. module: contract_report
-#: view:website:contract_report.report_contract_document
-msgid "H (Unit price:"
-msgstr "H (Stundensatz:"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -319,18 +319,13 @@ msgstr "Berechnet"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
-msgid "Invoices"
-msgstr "Rechnungen"
+msgid "Invoiced amount"
+msgstr "Rechnungsbetrag"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
-msgid "Invoices total"
-msgstr "Rechnungen Total"
-
-#. module: contract_report
-#: view:website:contract_report.report_contract_document
-msgid "Kind"
-msgstr "Art"
+msgid "Issued invoices"
+msgstr "Ausgestellte Rechnungen"
 
 #. module: contract_report
 #: field:contract.report,write_uid:0
@@ -373,11 +368,6 @@ msgstr "OS : Techniker vor-Ort beim Kunden"
 #: view:website:contract_report.report_contract_document
 msgid "On site support"
 msgstr "Anfahrten"
-
-#. module: contract_report
-#: view:website:contract_report.report_contract_document
-msgid "Period"
-msgstr "Periode"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -431,6 +421,11 @@ msgstr "Referenz"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
+msgid "Reporting period"
+msgstr "Zeitraum des Berichts"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
 msgid "SD : reaction per email or telephone"
 msgstr "SD : meldet sich per Email oder Telefon"
 
@@ -456,8 +451,8 @@ msgstr "Send by Email"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
-msgid "Service Desk accessible by calling +32 87 59 35 58 or per email at support@abakusitsolutions.eu"
-msgstr "Service Desk / +32.87593558 oder per Email an support@abakusitsolutions.eu"
+msgid "Service Desk accessible by calling +32 87 59 35 58 / +352 20 88 20 58 or per email at support@abakusitsolutions.eu"
+msgstr "Service Desk +32 87 59 35 58 / +352 20 88 20 58 oder per Email an support@abakusitsolutions.eu"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -491,8 +486,8 @@ msgstr "Dienstleistungstyp"
 
 #. module: contract_report
 #: model:email.template,report_name:contract_report.email_template_service_report
-msgid "ServiceReport_${(object.name or '').replace('/','_').replace('*','_').replace(':','_')}"
-msgstr "Dienstleistungsbericht_${(object.name or '').replace('/','_').replace('*','_').replace(':','_')}"
+msgid "ServiceReport_${(object.name or '').replace('/','_').replace('*','_').replace(':','_')}(${'%Y%m%d_%H%M%S'|time()})"
+msgstr "Dienstleistungsbericht_${(object.name or '').replace('/','_').replace('*','_').replace(':','_')}(${'%Y%m%d_%H%M%S'|time()})"
 
 #. module: contract_report
 #: field:contract.report,start_date:0
@@ -510,6 +505,11 @@ msgstr "Statistiken"
 #: view:website:contract_report.report_contract_document
 msgid "Status"
 msgstr "Status"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Support"
+msgstr "Support"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -543,8 +543,8 @@ msgstr "Gesamter Zahlungsbetrag:"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
-msgid "User"
-msgstr "Support"
+msgid "Type"
+msgstr "Art"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -563,6 +563,11 @@ msgstr "entspricht"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
+msgid "hours for a total of"
+msgstr "Stunden für insgesamt"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
 msgid "min"
 msgstr "min"
 
@@ -570,6 +575,11 @@ msgstr "min"
 #: view:website:contract_report.report_contract_document
 msgid "tickets"
 msgstr "Tickets"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "€ (Unit price:"
+msgstr "€ (Stundensatz:"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
