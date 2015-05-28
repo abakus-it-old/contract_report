@@ -1,7 +1,6 @@
-contract report
-===============
+#contract report
 
-  Functionalities:
+  - Functionalities:
     - It adds the possibility to print service reports for contract for AbAKUS it-solutions.
     - It adds a setting wizard for the date selection of delivery range and a chart option. You can access the wizard in all contracts or in the menu of the sales module.
     - The report is availaible in German, French and English.
