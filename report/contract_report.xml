@@ -195,11 +195,11 @@
                                         <t t-if="balance&lt;0">
                                             In our favour
                                         </t>    
-                                        <span t-esc="o.format_decimal_number(abs(balance))"/> €
+                                        <span t-esc="o.format_decimal_number(abs(balance))"/> €*
                                     </th>
                                 </tr>
                             </table> 
-                            <small>All prices plus VAT, where applicable.</small><br/>
+                            <small>*All prices plus VAT, where applicable.</small><br/>
                             <small>The present report is not an invoice.</small>
 				        </div>
                         
