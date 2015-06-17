@@ -170,7 +170,7 @@
                                     <td style="padding-left: 40px;">Working hours</td>
                                     <td class="text-right">
                                         <span t-esc="o.decimal_to_hours(working_hours_total)"/><br/>
-                                        equivalent to <span t-esc="int((100-(o.quantity_max-working_hours_total))/o.quantity_max*100)"/>% of the prepaid units
+                                        equivalent to <span t-esc="int((o.format_decimal_number(service_delivery_total) / o.format_decimal_number(prepaid_instalment_total)) * 100)"/>% of the prepaid units
                                     </td>
                                 </tr>
                                 <tr>
