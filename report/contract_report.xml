@@ -57,7 +57,7 @@
 							</tr>
 							<tr>
 								<th>Prepaid units</th>
-								<td><span t-esc="o.decimal_to_hours(o.quantity_max)"/> hours for a total of <span t-esc="o.format_decimal_number(o.quantity_max*o.timesheet_product_price)"/>  € (Unit price: <span t-esc="o.format_decimal_number(o.timesheet_product_price)"/> €, On site price: <span t-esc="o.format_decimal_number(o.on_site_product.lst_price)"/> €)</td>
+								<td><span t-esc="o.decimal_to_hours(o.quantity_max)"/> hours for a total of <span t-esc="o.format_decimal_number(o.quantity_max*o.timesheet_product_price)"/>  € (Unit price: <span t-esc="o.format_decimal_number(o.timesheet_product_price)"/> €, On site price: <span t-esc="o.format_decimal_number(o.on_site_product_price)"/> €)</td>
 							</tr>
                             <tr>
 								<th>SLA</th>
@@ -100,7 +100,7 @@
                                             <td><span t-field="line.user_id.name"/></td>
                                             <td>
                                                 <t t-if="line.on_site==True">
-                                                    <t t-set="computed_amount" t-value="o.on_site_product.lst_price"/>
+                                                    <t t-set="computed_amount" t-value="o.on_site_product_price"/>
                                                     <t t-set="on_site_total" t-value="on_site_total + 1"/>	
                                                     OS
                                                 </t>
