@@ -52,7 +52,7 @@
                         <t t-if="o.on_site_invoice_by_km==False">
                             <t t-set="travel_cost" t-value="o.on_site_product.lst_price"/>
                         </t>
-                        
+
                         <!-- contract details -->
                         <table class="table abakusBordered">
                             <tr>
@@ -63,10 +63,12 @@
                                 <th>Customer</th>
                                 <td><t t-if="o.partner_id.parent_id"><span t-esc="o.partner_id.parent_id.name"/></t><t t-if="not o.partner_id.parent_id"><span t-esc="o.partner_id.name"/></t></td>
                             </tr>
-                            <tr>
-                                <th>Prepaid units</th>
-                                <td><span t-esc="o.decimal_to_hours(o.quantity_max)"/> hours for a total of <span t-esc="o.format_decimal_number(o.quantity_max*o.timesheet_product_price)"/>  € (Unit price: <span t-esc="o.format_decimal_number(o.timesheet_product_price)"/> €, On site price: <span t-esc="o.format_decimal_number(travel_cost)"/> €)</td>
-                            </tr>
+                            <t t-if="not o.isRemovePrices()">
+                                <tr>
+                                    <th>Prepaid units</th>
+                                    <td><span t-esc="o.decimal_to_hours(o.quantity_max)"/> hours for a total of <span t-esc="o.format_decimal_number(o.quantity_max*o.timesheet_product_price)"/>  € (Unit price: <span t-esc="o.format_decimal_number(o.timesheet_product_price)"/> €, On site price: <span t-esc="o.format_decimal_number(travel_cost)"/> €)</td>                           
+                                </tr>
+                            </t>
                             <tr>
                                 <th>SLA</th>
                                 <td><t t-if="o.sla_bool"><span t-esc="o.sla_name"/></t><t t-if="not o.sla_bool">No SLA</t></td>
@@ -91,8 +93,10 @@
                                     <th style="width: 130px;">Support</th>
                                     <th>Type</th>
                                     <th>Quantity</th>
-                                    <th>Invoiceable</th>
-                                    <th class="text-right" style="width: 90px;">Amount</th>
+                                    <t t-if="not o.isRemovePrices()">
+                                        <th>Invoiceable</th>
+                                        <th class="text-right" style="width: 90px;">Amount</th>
+                                    </t>
                                 </tr>
                                 <t t-set="service_delivery_total" t-value="0"/>
                                 <t t-set="working_hours_total" t-value="0"/>
@@ -118,101 +122,108 @@
                                                 </t>
                                             </td>
                                             <td><span t-esc="o.decimal_to_hours(line.unit_amount)"/></td>
-                                            <td><span t-esc="line.to_invoice.name"/></td>
-                                            <t t-set="computed_amount" t-value="computed_amount + ((price * line.unit_amount)*((100-line.to_invoice.factor)/100))"/>
-                                            <td class="text-right"><span t-esc="o.format_decimal_number(computed_amount)"/> €</td>
+                                            <t t-if="not o.isRemovePrices()">
+                                                <td><span t-esc="line.to_invoice.name"/></td>
+                                                <t t-set="computed_amount" t-value="computed_amount + ((price * line.unit_amount)*((100-line.to_invoice.factor)/100))"/>
+                                                <td class="text-right"><span t-esc="o.format_decimal_number(computed_amount)"/> €</td>
+                                            </t>
                                         </tr>
-                                        <t t-set="service_delivery_total" t-value="service_delivery_total + computed_amount"/>
-                                        <t t-set="working_hours_total" t-value="working_hours_total + line.unit_amount"/>
+                                        <t t-if="not o.isRemovePrices()">
+                                            <t t-set="service_delivery_total" t-value="service_delivery_total + computed_amount"/>
+                                            <t t-set="working_hours_total" t-value="working_hours_total + line.unit_amount"/>
+                                        </t>
                                     </t>
                                 </t>        
                             </table>
-                            <table class="table">
-                                <tr class="abakusBordered">
-                                    <th>Service delivery total</th>
-                                    <th class="text-right"><span t-esc="o.format_decimal_number(service_delivery_total)"/> €</th>
-                                </tr>
-                            </table>
+                            <t t-if="not o.isRemovePrices()">
+                                <table class="table">
+                                    <tr class="abakusBordered">
+                                        <th>Service delivery total</th>
+                                        <th class="text-right"><span t-esc="o.format_decimal_number(service_delivery_total)"/> €</th>
+                                    </tr>
+                                </table>
+                            </t>
                         </div>
-
-                        <div style="page-break-inside:avoid;">
-                            <h2>Issued invoices</h2>
-                            <table class="table table-condensed table-striped">
-                                <tr class="abakusBordered">
-                                    <th>Date</th>
-                                    <th>Description</th>
-                                    <th>Reference</th>
-                                    <th style="width: 90px;">Amount</th>
-                                </tr>
-                                <t t-set="prepaid_instalment_total" t-value="0"/>
-                                <t t-foreach="o.line_ids" t-as="line">
-                                    <t t-if="line.ref and o.check_start_end_line_date(line.date)">
-                                        <tr>
-                                            <td>
-                                                <span t-field="line.date" t-field-options="{&quot;format&quot;: &quot;dd.MM.YYYY&quot;}"/>
-                                            </td>
-                                            <td><span t-field="line.name"/></td>
-                                            <td><span t-field="line.ref"/></td>
-                                            <td><span t-esc="o.format_decimal_number(line.amount)"/> €</td>
-                                        </tr>
-                                        <t t-set="prepaid_instalment_total" t-value="prepaid_instalment_total + line.amount"/>
-                                    </t>
-                                </t>        
-                            </table>
-                            <table class="table">
-                                <tr class="abakusBordered">
-                                    <th>Invoiced amount</th>
-                                    <th class="text-right"><span t-esc="o.format_decimal_number(prepaid_instalment_total)"/> €</th>
-                                </tr>
-                            </table>
-                        </div>
-
-                        <div style="page-break-inside:avoid;">
-                            <h2>Balance</h2>
-                            <table class="table table-condensed table-bordered">
-                                <tr>
-                                    <th style="width: 30%;">Service delivery</th>
-                                    <th class="text-right"><span t-esc="o.format_decimal_number(service_delivery_total)"/> €</th>
-                                </tr>
-                                <tr>
-                                    <td style="padding-left: 40px;">Working hours</td>
-                                    <td class="text-right">
-                                        <span t-esc="o.decimal_to_hours(working_hours_total)"/><br/>
-                                        <t t-if="prepaid_instalment_total!=0">
+                        <t t-if="not o.isRemovePrices()">
+                            <div style="page-break-inside:avoid;">
+                                <h2>Issued invoices</h2>
+                                <table class="table table-condensed table-striped">
+                                    <tr class="abakusBordered">
+                                        <th>Date</th>
+                                        <th>Description</th>
+                                        <th>Reference</th>
+                                        <th style="width: 90px;">Amount</th>
+                                    </tr>
+                                    <t t-set="prepaid_instalment_total" t-value="0"/>
+                                    <t t-foreach="o.line_ids" t-as="line">
+                                        <t t-if="line.ref and o.check_start_end_line_date(line.date)">
+                                            <tr>
+                                                <td>
+                                                    <span t-field="line.date" t-field-options="{&quot;format&quot;: &quot;dd.MM.YYYY&quot;}"/>
+                                                </td>
+                                                <td><span t-field="line.name"/></td>
+                                                <td><span t-field="line.ref"/></td>
+                                                <td><span t-esc="o.format_decimal_number(line.amount)"/> €</td>
+                                            </tr>
+                                            <t t-set="prepaid_instalment_total" t-value="prepaid_instalment_total + line.amount"/>
+                                        </t>
+                                    </t>        
+                                </table>
+                                <table class="table">
+                                    <tr class="abakusBordered">
+                                        <th>Invoiced amount</th>
+                                        <th class="text-right"><span t-esc="o.format_decimal_number(prepaid_instalment_total)"/> €</th>
+                                    </tr>
+                                </table>
+                            </div>
+                        </t> 
+                        <t t-if="not o.isRemovePrices()">
+                            <div style="page-break-inside:avoid;">
+                                <h2>Balance</h2>
+                                <table class="table table-condensed table-bordered">
+                                    <tr>
+                                        <th style="width: 30%;">Service delivery</th>
+                                        <th class="text-right"><span t-esc="o.format_decimal_number(service_delivery_total)"/> €</th>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-left: 40px;">Working hours</td>
+                                        <td class="text-right">
+                                            <span t-esc="o.decimal_to_hours(working_hours_total)"/><br/>
+                                            <t t-if="prepaid_instalment_total!=0">
                                             equivalent to <span t-esc="int((service_delivery_total/prepaid_instalment_total) * 100)"/>% of the prepaid units
-                                        </t>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="padding-left: 40px;">On site support</td>
-                                    <td class="text-right"><span t-esc="on_site_total"/></td>
-                                </tr>
-                            </table>
-                            <table class="table table-condensed table-bordered"> 
-                                <tr>
-                                    <th style="width: 30%;">Invoiced amount</th>
-                                    <th class="text-right"><span t-esc="o.format_decimal_number(prepaid_instalment_total)"/> €</th>
-                                </tr>
-                            </table> 
-                            <table class="table table-condensed abakusBorderedNoBackground" > 
-                                <tr style="font-size:15px;">
-                                    <th>Balance</th>
-                                    <t t-set="balance" t-value="prepaid_instalment_total - service_delivery_total"/>
-                                    <th class="text-right">
-                                        <t t-if="balance&gt;=0">
+                                            </t>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-left: 40px;">On site support</td>
+                                        <td class="text-right"><span t-esc="on_site_total"/></td>
+                                    </tr>
+                                </table>
+                                <table class="table table-condensed table-bordered"> 
+                                    <tr>
+                                        <th style="width: 30%;">Invoiced amount</th>
+                                        <th class="text-right"><span t-esc="o.format_decimal_number(prepaid_instalment_total)"/> €</th>
+                                    </tr>
+                                </table> 
+                                <table class="table table-condensed abakusBorderedNoBackground" > 
+                                    <tr style="font-size:15px;">
+                                        <th>Balance</th>
+                                        <t t-set="balance" t-value="prepaid_instalment_total - service_delivery_total"/>
+                                        <th class="text-right">
+                                            <t t-if="balance&gt;=0">
                                             In your favour
-                                        </t>
-                                        <t t-if="balance&lt;0">
+                                            </t>
+                                            <t t-if="balance&lt;0">
                                             In our favour
-                                        </t>    
-                                        <span t-esc="o.format_decimal_number(abs(balance))"/> €*
-                                    </th>
-                                </tr>
-                            </table> 
-                            <small>*All prices plus VAT, where applicable.</small><br/>
-                            <small>The present report is not an invoice.</small>
-                        </div>
-
+                                            </t>    
+                                            <span t-esc="o.format_decimal_number(abs(balance))"/> €*
+                                        </th>
+                                    </tr>
+                                </table> 
+                                <small>*All prices plus VAT, where applicable.</small><br/>
+                                <small>The present report is not an invoice.</small>
+                            </div>
+                        </t>
                         <div style="page-break-inside:avoid;">
                             <h3>Information</h3>
                             <table class="table table-condensed table-bordered">
@@ -293,12 +304,14 @@
                                                     <td><span t-esc="o.decimal_to_hours(types['OS']['timeSum'])"/></td>
                                                     <td><span t-esc="o.decimal_to_hours(types['OS']['timeSum']+types['SD']['timeSum'])"/></td>
                                                 </tr>
-                                                <tr>
-                                                    <th>Price</th>
-                                                    <td><span t-esc="o.format_decimal_number(types['SD']['priceSum'])"/> €</td>
-                                                    <td><span t-esc="o.format_decimal_number(types['OS']['priceSum'])"/> €</td>
-                                                    <td><span t-esc="o.format_decimal_number(types['OS']['priceSum']+types['SD']['priceSum'])"/> €</td>
-                                                </tr>
+                                                <t t-if="not o.isRemovePrices()">
+                                                    <tr>
+                                                        <th>Price</th>
+                                                        <td><span t-esc="o.format_decimal_number(types['SD']['priceSum'])"/> €</td>
+                                                        <td><span t-esc="o.format_decimal_number(types['OS']['priceSum'])"/> €</td>
+                                                        <td><span t-esc="o.format_decimal_number(types['OS']['priceSum']+types['SD']['priceSum'])"/> €</td>
+                                                    </tr>
+                                                </t>
                                             </table>
                                             * Based on <span t-esc="types['ticketSum']"/> tickets
                                         </td>

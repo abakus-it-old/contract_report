@@ -46,7 +46,7 @@ class account_analytic_account_report_methods(models.Model):
         if contract_report_id:
             contract_report = contract_report_obj.browse(cr, uid, contract_report_id[0])
             if contract_report:
-                self.contract_report_info = "Start date: %s, End date: %s, Statistics: %s" %(contract_report.start_date,contract_report.end_date,str(contract_report.statistics))
+                self.contract_report_info = "Start date: %s, End date: %s, Statistics: %s, Remove prices: %s" %(contract_report.start_date,contract_report.end_date,str(contract_report.statistics),str(contract_report.remove_prices))
     
     def format_decimal_number(self, number, point_numbers=2, separator=','):
         number_string = str(round(round(number, point_numbers+1),point_numbers))
@@ -141,5 +141,16 @@ class account_analytic_account_report_methods(models.Model):
         if contract_report_id:
             contract_report = contract_report_obj.browse(cr, uid, contract_report_id[0])
             return contract_report.statistics
+        else:
+            return False
+            
+    def isRemovePrices(self):
+        cr = self.env.cr
+        uid = self.env.user.id
+        contract_report_obj = self.pool.get('contract.report')
+        contract_report_id = contract_report_obj.search(cr, uid, [('id','=',1)])
+        if contract_report_id:
+            contract_report = contract_report_obj.browse(cr, uid, contract_report_id[0])
+            return contract_report.remove_prices
         else:
             return False
