@@ -44,7 +44,6 @@
                         </div>
 
                         <h1 class="text-center">Service report</h1>
-
                         <t t-set="travel_cost" t-value="0"/>
                         <t t-if="o.on_site_invoice_by_km==True">
                             <t t-set="travel_cost" t-value="o.on_site_product.lst_price*o.on_site_distance_in_km"/>
@@ -57,7 +56,7 @@
                         <table class="table abakusBordered">
                             <tr>
                                 <th>Contract</th>
-                                <td><span t-field="o.name"/> (<span t-esc="o.format_date(o.date_start)"/> - <span t-esc="o.format_date(o.date)"/>)</td>
+                                <td><span t-field="o.name"/></td>
                             </tr>
                             <tr>
                                 <th>Customer</th>
@@ -70,6 +69,10 @@
                                 </tr>
                             </t>
                             <tr>
+				<th>Period covered by contract</th>
+				<td><span t-esc="o.format_date(o.date_start)"/> - <span t-esc="o.format_date(o.date)"/></td>
+			    </tr>
+			    <tr>
                                 <th>SLA</th>
                                 <td><t t-if="o.sla_bool"><span t-esc="o.sla_name"/></t><t t-if="not o.sla_bool">No SLA</t></td>
                             </tr>
@@ -267,6 +270,13 @@
                             </table>
                         </div>
 
+                        <t t-if="o.id==o.id">
+	                        <tr>
+        	                        <td>
+                                                Project
+                                        </td>
+                                </tr>
+                        </t>
                         <t t-if="o.isStatistics()">
                             <div style="page-break-inside:avoid;">
                                 <h1 class="text-center text-uppercase">Tickets Statistics</h1>
@@ -317,6 +327,8 @@
                                         </td>
                                         <td class="text-right" style="vertical-align: middle;"><img t-att-src="o.issue_per_type" style="max-height:200px"/></td>
                                     </tr>
+
+
 
                                     <t t-if="o.sla_bool">
                                         <tr>                                      
