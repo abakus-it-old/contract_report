@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 8.0-20150330\n"
+"Project-Id-Version: Odoo Server 8.0-20150625\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-22 13:42+0000\n"
-"PO-Revision-Date: 2015-05-22 13:42+0000\n"
+"POT-Creation-Date: 2015-10-28 15:11+0000\n"
+"PO-Revision-Date: 2015-10-28 15:11+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -79,13 +79,13 @@ msgstr "\n"
 "    <p>anbei Ihr Dienstleistungsbericht</p>\n"
 "    \n"
 "    <p style=\"border-left: 2px solid #E97B2E; margin-left: 10px; padding-left: 5px;\">\n"
-"        &nbsp;&nbsp;<strong>INFORMATIONEN</strong><br />\n"
+"        &nbsp;&nbsp;<strong>INFORMATION</strong><br />\n"
 "        &nbsp;&nbsp;Kunde: <strong>${object.partner_id.name}</strong><br />\n"
 "        &nbsp;&nbsp;Ansprechpartner: <strong>${object.manager_id.name}</strong><br />\n"
 "    </p>  \n"
 "        \n"
 "    <p>Bei Fragen stehen wir Ihnen gerne zur Verfügung.</p>\n"
-"    <p>Wir danken Ihnen für die freundliche Zusammenarbeit mit ${object.company_id.name or 'uns'}, Ihr Specialist für IT Komfort</p>\n"
+"    <p>Wir danken Ihnen für Ihre freundliche Zusammenarbeit mit ${object.company_id.name or 'uns'}, Ihr Specialist für IT Komfort</p>\n"
 "\n"
 "    <!-- SIGNATURE -->\n"
 "    <div style=\"width: 100%; margin: 0px; padding: 0px; background-color: #E97B2E; border-top-left-radius: 5px 5px; border-top-right-radius: 5px 5px; background-repeat: repeat no-repeat;\">\n"
@@ -134,7 +134,7 @@ msgstr "\"On-Site\" Arbeiten vor-Ort beim Kunden / auf Termin"
 #. module: contract_report
 #: model:email.template,subject:contract_report.email_template_service_report
 msgid "${object.company_id.name|safe}: Service Report"
-msgstr "${object.company_id.name|safe}: Dienstleistungsbericht"
+msgstr "${object.company_id.name|safe}: Service Report"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -148,13 +148,13 @@ msgstr "* Basierend auf"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
-msgid "A priority"
-msgstr "Eine Priorität"
+msgid "*All prices plus VAT, where applicable."
+msgstr "Alle Preise zzgl. MWST, soweit anwendbar."
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
-msgid "Period covered by contract"
-msgstr "Vertragliche Zeitspanne"
+msgid "A priority"
+msgstr "Eine Priorität"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -173,18 +173,13 @@ msgstr "Ein Status"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
-msgid "*All prices plus VAT, where applicable."
-msgstr "Alle Preise zzgl. MWST, soweit anwendbar."
-
-#. module: contract_report
-#: view:website:contract_report.report_contract_document
 msgid "Amount"
-msgstr "Total"
+msgstr "Betrag"
 
 #. module: contract_report
 #: model:ir.model,name:contract_report.model_account_analytic_account
 msgid "Analytic Account"
-msgstr "Kostenkonto"
+msgstr "Kostenstellenkonto"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -225,7 +220,7 @@ msgstr "Vertrag"
 #. module: contract_report
 #: view:account.analytic.account:contract_report.view_account_analytic_account_sla_stats
 msgid "Contract Information"
-msgstr "Vertragsinformation"
+msgstr "Vertragsinformationen"
 
 #. module: contract_report
 #: model:ir.actions.act_window,name:contract_report.action_contract_report_wizard
@@ -240,8 +235,8 @@ msgstr "Contract Report Einstellungen"
 
 #. module: contract_report
 #: model:ir.actions.report.xml,name:contract_report.contract_abakus
-msgid "Contract Timesheet Report"
-msgstr "Contract Timesheet Report"
+msgid "Contract Service Report"
+msgstr "Contract Service Report"
 
 #. module: contract_report
 #: field:contract.report,create_uid:0
@@ -295,6 +290,11 @@ msgstr "Enddatum"
 #: view:website:contract_report.report_contract_document
 msgid "High"
 msgstr "High"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
+msgid "Hour unit price"
+msgstr "Studensatz"
 
 #. module: contract_report
 #: field:contract.report,id:0
@@ -351,6 +351,11 @@ msgstr "Low"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
+msgid "Minimum contractual amount"
+msgstr "Vertragliche Mindestleistung"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
 msgid "Monitoring"
 msgstr "Monitoring"
 
@@ -376,8 +381,8 @@ msgstr "Anfahrten"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
-msgid "Prepaid units"
-msgstr "Vertragliche Mindestleistung"
+msgid "Period covered by contract"
+msgstr "Vertragliche Zeitspanne"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -401,8 +406,13 @@ msgstr "Proaktive Wartung"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
+msgid "Project"
+msgstr "Project"
+
+#. module: contract_report
+#: view:website:contract_report.report_contract_document
 msgid "Quantity"
-msgstr "Menge"
+msgstr "Anzahl"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -417,12 +427,18 @@ msgstr "Reaktionszeit in Minuten"
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "Reaction time: (Compliance 85%)"
-msgstr "Reaktionszeit: (Compliance 85%)"
+msgstr "Reaktions-Zeit (Compliance: 85%)"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "Reference"
 msgstr "Referenz"
+
+#. module: contract_report
+#: field:contract.report,remove_prices:0
+#: field:contract.report.wizard,remove_prices:0
+msgid "Remove prices"
+msgstr "Remove prices"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -462,12 +478,12 @@ msgstr "Service Desk +32 87 59 35 58 / +352 20 88 20 58 oder per Email an suppor
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "Service Level Agreement"
-msgstr "Dienstleistungsvereinbarung (Service Level Agreement)"
+msgstr "Service Level Agreement"
 
 #. module: contract_report
 #: view:account.analytic.account:contract_report.view_account_analytic_account_sla_stats
 msgid "Service Report"
-msgstr "Dienstleistungsbericht"
+msgstr "Service Report"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -544,7 +560,7 @@ msgstr "Zeit"
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
 msgid "Total"
-msgstr "Gesamter Zahlungsbetrag:"
+msgstr "Bruttobetrag"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
@@ -568,11 +584,6 @@ msgstr "entspricht"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
-msgid "hours for a total of"
-msgstr "Stunden für insgesamt"
-
-#. module: contract_report
-#: view:website:contract_report.report_contract_document
 msgid "min"
 msgstr "min"
 
@@ -583,11 +594,6 @@ msgstr "Tickets"
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
-msgid "€ (Unit price:"
-msgstr "€ (Stundensatz:"
-
-#. module: contract_report
-#: view:website:contract_report.report_contract_document
-msgid "€, On site price:"
-msgstr "€, Anfahrtskosten:"
+msgid "€, On site travel cost:"
+msgstr "€, Anfahrtskosten: "
 

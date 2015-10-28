@@ -62,17 +62,22 @@
                                 <th>Customer</th>
                                 <td><t t-if="o.partner_id.parent_id"><span t-esc="o.partner_id.parent_id.name"/></t><t t-if="not o.partner_id.parent_id"><span t-esc="o.partner_id.name"/></t></td>
                             </tr>
+                            <!-- Prices -->
                             <t t-if="not o.isRemovePrices()">
                                 <tr>
-                                    <th>Prepaid units</th>
-                                    <td><span t-esc="o.decimal_to_hours(o.quantity_max)"/> hours for a total of <span t-esc="o.format_decimal_number(o.quantity_max*o.timesheet_product_price)"/>  € (Unit price: <span t-esc="o.format_decimal_number(o.timesheet_product_price)"/> €, On site price: <span t-esc="o.format_decimal_number(travel_cost)"/> €)</td>                           
+                                    <th>Minimum contractual amount</th>
+                                    <td><span t-esc="o.format_decimal_number(o.contractual_minimum_amount)"/>€</td>
+                                </tr>
+                                <tr>
+                                    <th>Hour unit price</th>
+                                    <td><span t-esc="o.format_decimal_number(o.timesheet_product_price)"/> €, On site travel cost: <span t-esc="o.format_decimal_number(travel_cost)"/> €</td>
                                 </tr>
                             </t>
                             <tr>
-				<th>Period covered by contract</th>
-				<td><span t-esc="o.format_date(o.date_start)"/> - <span t-esc="o.format_date(o.date)"/></td>
-			    </tr>
-			    <tr>
+                                <th>Period covered by contract</th>
+                                <td><span t-esc="o.format_date(o.date_start)"/> - <span t-esc="o.format_date(o.date)"/></td>
+                            </tr>
+                            <tr>
                                 <th>SLA</th>
                                 <td><t t-if="o.sla_bool"><span t-esc="o.sla_name"/></t><t t-if="not o.sla_bool">No SLA</t></td>
                             </tr>

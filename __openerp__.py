@@ -1,6 +1,6 @@
 ﻿{
     'name': "AbAKUS Contract report",
-    'version': '1.1',
+    'version': '1.2',
     'depends': ['sale', 'report'],
     'author': "Bernard DELHEZ, AbAKUS it-solutions SARL",
     'website': "http://www.abakusitsolutions.eu",
