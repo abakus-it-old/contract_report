@@ -1,6 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
-	<data>
+    <data>
+        <record id="view_contract_report_wizard_print" model="ir.ui.view">
+            <field name="name">view_contract_report_wizard_form_print</field>
+            <field name="model">contract.report.wizard</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Contract Report Print">
+                    <group >
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                        <field name="statistics"/>
+                        <field name="remove_prices"/>
+                        <newline/>
+                    </group>
+                    <div style="text-align:right">
+                        <button  icon="gtk-cancel" special="cancel" string="Cancel"/>
+                        <button name="print_report" string="Print" type="object" /> 
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_contract_report_wizard_send_by_email" model="ir.ui.view">
+            <field name="name">view_contract_report_wizard_form_send_by_email</field>
+            <field name="model">contract.report.wizard</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Contract Report Print">
+                    <group >
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                        <field name="statistics"/>
+                        <field name="remove_prices"/>
+                        <newline/>
+                    </group>
+                    <div style="text-align:right">
+                        <button  icon="gtk-cancel" special="cancel" string="Cancel"/>
+                        <button name="send_by_email" string="Send by email" type="object" /> 
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!--
         <record id="view_contract_report_wizard" model="ir.ui.view">
             <field name="name">view_contract_report_wizard_form</field>
             <field name="model">contract.report.wizard</field>
@@ -37,7 +80,8 @@
                 res_model="contract.report.wizard" 
                 view_mode="form" 
                 target="new"/>
-        
+
         <menuitem id="contract_report_menu" name="Contract Report" parent="base.menu_base_config" action="action_contract_report_wizard"/>
-	</data>
+        -->
+    </data>
 </openerp>

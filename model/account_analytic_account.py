@@ -19,22 +19,38 @@ class account_analytic_account_report_methods(models.Model):
             default_template_id=template.id,
             default_composition_mode='comment',
             mark_invoice_as_sent=True,
+            compose_form_id=compose_form.id,
         )
+
+        dummy, view_id = self.pool.get('ir.model.data').get_object_reference(self.env.cr, self.env.user.id, 'contract_report', 'view_contract_report_wizard_send_by_email')
+        self.pool.get('contract.report.wizard').reset_stats(self.env.cr, self.env.user.id)
         return {
-            'name': _('Compose Email'),
-            'type': 'ir.actions.act_window',
-            'view_type': 'form',
+            'name':_("Send by Email Service Report"),
             'view_mode': 'form',
-            'res_model': 'mail.compose.message',
-            'views': [(compose_form.id, 'form')],
-            'view_id': compose_form.id,
+            'view_id': view_id,
+            'view_type': 'form',
+            'res_model': 'contract.report.wizard',
+            'type': 'ir.actions.act_window',
             'target': 'new',
+            'domain': '',
             'context': ctx,
         }
-
     
     def print_timesheets_report(self, cr, uid, ids, context=None):
-        return self.pool['report'].get_action(cr, uid, ids, 'contract_report.report_contract', context=context)
+        dummy, view_id = self.pool.get('ir.model.data').get_object_reference(cr, uid, 'contract_report', 'view_contract_report_wizard_print')
+        self.pool.get('contract.report.wizard').reset_stats(cr, uid)
+        return {
+            'name':_("Print Service Report"),
+            'view_mode': 'form',
+            'view_id': view_id,
+            'view_type': 'form',
+            'res_model': 'contract.report.wizard',
+            'type': 'ir.actions.act_window',
+            'target': 'new',
+            'domain': '',
+            'context': {'account_ids': ids,}
+        }
+        #return self.pool['report'].get_action(cr, uid, ids, 'contract_report.report_contract', context=context)
     
     @api.one
     def _compute_contract_report_info(self):
