@@ -275,13 +275,6 @@
                             </table>
                         </div>
 
-                        <t t-if="o.id==o.id">
-	                        <tr>
-        	                        <td>
-                                                Project
-                                        </td>
-                                </tr>
-                        </t>
                         <t t-if="o.isStatistics()">
                             <div style="page-break-inside:avoid;">
                                 <h1 class="text-center text-uppercase">Tickets Statistics</h1>
