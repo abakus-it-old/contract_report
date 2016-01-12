@@ -69,7 +69,7 @@
                                     <td><span t-esc="o.format_decimal_number(o.contractual_minimum_amount)"/>€</td>
                                 </tr>
                                 <tr>
-                                    <th>Hour unit price</th>
+                                    <th>Hour rate</th>
                                     <td><span t-esc="o.format_decimal_number(o.timesheet_product_price)"/> €, On site travel cost: <span t-esc="o.format_decimal_number(travel_cost)"/> €</td>
                                 </tr>
                             </t>

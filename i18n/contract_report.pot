@@ -240,7 +240,7 @@ msgstr ""
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
-msgid "Hour unit price"
+msgid "Hour rate"
 msgstr ""
 
 #. module: contract_report
