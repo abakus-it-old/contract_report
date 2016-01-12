@@ -65,7 +65,7 @@
                             <!-- Prices -->
                             <t t-if="not o.isRemovePrices()">
                                 <tr>
-                                    <th>Minimum contractual amount</th>
+                                    <th>Minimum annual contractual amount</th>
                                     <td><span t-esc="o.format_decimal_number(o.contractual_minimum_amount)"/>€</td>
                                 </tr>
                                 <tr>

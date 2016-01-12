@@ -298,7 +298,7 @@ msgstr ""
 
 #. module: contract_report
 #: view:website:contract_report.report_contract_document
-msgid "Minimum contractual amount"
+msgid "Minimum annual contractual amount"
 msgstr ""
 
 #. module: contract_report
