@@ -4,7 +4,7 @@
         <report 
 			id="contract_abakus"
 			string="Contract Service Report"
-			model="account.analytic.account" 
+			model="sale.subscription"
 			report_type="qweb-pdf"
 			file="contract_report" 
 			name="contract_report.report_contract"

@@ -1,12 +1,19 @@
 ﻿{
     'name': "AbAKUS Contract report",
     'version': '1.2',
-    'depends': ['sale', 'report'],
+    'depends': [
+        'report',
+        'project',
+        'sale_contract',
+        'account_analytic_account_improvements',
+    ],
     'author': "Bernard DELHEZ, AbAKUS it-solutions SARL",
     'website': "http://www.abakusitsolutions.eu",
     'category': 'Contract',
     'description': 
     """
+    Contract Report for AbAKUS Baseline Projects
+
     This modules adds the possibility to print service prestation reports for contract for AbAKUS it-solutions.
 
     It also adds a setting wizard for the date selection of prestation range.

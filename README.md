@@ -1,4 +1,4 @@
-#contract report
+#Contract report
 
   - Functionalities:
     - It adds the possibility to print service reports for contract for AbAKUS it-solutions.
