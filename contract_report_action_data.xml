@@ -9,7 +9,7 @@
             <field name="email_from">${(object.user_id.email or object.company_id.email or 'noreply@localhost')|safe}</field>
             <field name="subject">${object.company_id.name|safe}: Service Report</field>
             <field name="partner_to">${object.partner_id.id}</field>
-            <field name="model_id" ref="analytic.model_account_analytic_account"/>
+            <field name="model_id" ref="contract_report.model_sale_subscription"/>
             <field name="auto_delete" eval="True"/>
             <field name="report_template" ref="contract_abakus"/>
             <field name="report_name">ServiceReport_${(object.name or '').replace('/','_').replace('*','_').replace(':','_')}(${'%Y%m%d_%H%M%S'|time()})</field>
