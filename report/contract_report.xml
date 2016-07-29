@@ -12,6 +12,14 @@
             attachment='"ServiceReport-"+object.name.replace(" ","").replace("*","")+"("+time.strftime("%Y%m%d_%H%M%S")+").pdf"'
 		/>
 
+        <template id="report_contract">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="contract_report.report_contract_document" t-lang="o.partner_id.lang"/>
+                </t>
+            </t>
+        </template>
+
         <template id="report_contract_document">
             <t t-name="contract_report.report_contract_document">
                 <t t-call="report.external_layout">
@@ -370,14 +378,6 @@
                             </div>
                         </t>
                     </div>
-                </t>
-            </t>
-        </template>
-
-        <template id="report_contract">
-            <t t-call="report.html_container">
-                <t t-foreach="doc_ids" t-as="doc_id">
-                    <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'contract_report.report_contract_document')"/>
                 </t>
             </t>
         </template>

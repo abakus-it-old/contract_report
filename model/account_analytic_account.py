@@ -4,7 +4,7 @@ from datetime import date
 import pytz
 
 class account_analytic_account_report_methods(models.Model):
-    _inherit = ['account.analytic.account']
+    _inherit = ['sale.subscription']
     contract_report_info = fields.Char(compute='_compute_contract_report_info',string="Contract report settings", store=False)
 
     @api.multi
@@ -35,10 +35,11 @@ class account_analytic_account_report_methods(models.Model):
             'domain': '',
             'context': ctx,
         }
-    
-    def print_timesheets_report(self, cr, uid, ids, context=None):
-        dummy, view_id = self.pool.get('ir.model.data').get_object_reference(cr, uid, 'contract_report', 'view_contract_report_wizard_print')
-        self.pool.get('contract.report.wizard').reset_stats(cr, uid)
+
+    @api.multi
+    def print_timesheets_report(self):
+        dummy, view_id = self.pool.get('ir.model.data').get_object_reference(self.env.cr, self.env.user.id, 'contract_report', 'view_contract_report_wizard_print')
+        self.pool.get('contract.report.wizard').reset_stats(self.env.cr, self.env.user.id)
         return {
             'name':_("Print Service Report"),
             'view_mode': 'form',
@@ -48,7 +49,7 @@ class account_analytic_account_report_methods(models.Model):
             'type': 'ir.actions.act_window',
             'target': 'new',
             'domain': '',
-            'context': {'account_ids': ids,}
+            'context': {'account_ids': self.ids,}
         }
         #return self.pool['report'].get_action(cr, uid, ids, 'contract_report.report_contract', context=context)
     
