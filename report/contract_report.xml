@@ -119,7 +119,7 @@
                                 <t t-set="on_site_total" t-value="0"/>							
                                 <t t-set="price" t-value="o.timesheet_product_price"/>
                                 <t t-foreach="o.line_ids" t-as="line">
-                                    <t t-if="not line.ref and o.check_start_end_line_date(line.date)">
+                                    <t t-if="not line.move_id and o.check_start_end_line_date(line.date)">
                                         <tr>
                                             <td>
                                                 <span t-field="line.date" t-field-options="{&quot;format&quot;: &quot;dd.MM.YYYY&quot;}"/>

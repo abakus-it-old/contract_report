@@ -1,6 +1,6 @@
 ﻿{
     'name': "AbAKUS Contract report",
-    'version': '1.2',
+    'version': '9.0.1.0',
     'depends': [
         'report',
         'project',
@@ -12,13 +12,13 @@
     'category': 'Contract',
     'description': 
     """
-    Contract Report for AbAKUS Baseline Projects
+Contract Report for AbAKUS Baseline Projects
 
-    This modules adds the possibility to print service prestation reports for contract for AbAKUS it-solutions.
+This modules adds the possibility to print service prestation reports for contract for AbAKUS it-solutions.
 
-    It also adds a setting wizard for the date selection of prestation range.
+It also adds a setting wizard for the date selection of prestation range.
 
-    This module has been developed by Bernard Delhez, intern @ AbAKUS it-solutions, under the control of Valentin Thirion.
+This module has been developed by Bernard Delhez, intern @ AbAKUS it-solutions, under the control of Valentin Thirion.
     """,
     'data': [
         'wizard/contract_report_view.xml',

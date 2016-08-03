@@ -13,7 +13,7 @@ class account_analytic_account_report_methods(models.Model):
         template = self.env.ref('contract_report.email_template_service_report', False)
         compose_form = self.env.ref('mail.email_compose_message_wizard_form', False)
         ctx = dict(
-            default_model='account.analytic.account',
+            default_model='sale.subscription',
             default_res_id=self.id,
             default_use_template=bool(template),
             default_template_id=template.id,
