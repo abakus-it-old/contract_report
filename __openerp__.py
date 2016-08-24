@@ -1,18 +1,19 @@
-﻿{
+﻿# -*- coding: utf-8 -*-
+
+{
     'name': "AbAKUS Contract report",
-    'version': '9.0.1.0',
+    'version': '9.0.1.1',
     'depends': [
         'report',
         'project',
         'sale_contract',
-        'account_analytic_account_improvements',
+        'sla',
     ],
     'author': "Bernard DELHEZ, AbAKUS it-solutions SARL",
     'website': "http://www.abakusitsolutions.eu",
     'category': 'Contract',
     'description': 
-    """
-Contract Report for AbAKUS Baseline Projects
+    """Contract Report for AbAKUS Baseline Projects
 
 This modules adds the possibility to print service prestation reports for contract for AbAKUS it-solutions.
 
@@ -23,9 +24,9 @@ This module has been developed by Bernard Delhez, intern @ AbAKUS it-solutions, 
     'data': [
         'wizard/contract_report_view.xml',
         'report/contract_report.xml',
-        'view/account_analytic_account_view.xml',
+        'views/account_analytic_account_view.xml',
         'security/ir.model.access.csv',
-        'contract_report_data.xml',
-        'contract_report_action_data.xml',
+        'data/contract_report_data.xml',
+        'data/contract_report_action_data.xml',
     ],
 }

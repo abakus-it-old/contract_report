@@ -1,1 +1,3 @@
-﻿from . import contract_report
+﻿# -*- coding: utf-8 -*-
+
+import contract_report
