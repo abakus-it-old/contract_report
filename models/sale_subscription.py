@@ -8,6 +8,7 @@ import pytz
 class sale_subscription_report_methods(models.Model):
     _inherit = 'sale.subscription'
     contract_report_info = fields.Char(compute='_compute_contract_report_info',string="Contract report settings", store=False)
+    report_partner_id = fields.Many2one('res.partner', 'Partner for the Report')
 
     @api.multi
     def action_service_report_sent(self):
