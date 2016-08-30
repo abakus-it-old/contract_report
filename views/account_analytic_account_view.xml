@@ -8,6 +8,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//group[@id='invoicing_support_contract']" position="after">
                     <group string="Service Report" id="contract_report">
+                    	<field name="report_partner_id" />
                         <button name="print_timesheets_report" type="object" string="Print"/>
                         <button name="action_service_report_sent" type="object" string="Send by Email"/>
                     </group>
