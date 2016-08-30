@@ -2,7 +2,7 @@
 
 {
     'name': "AbAKUS Contract report",
-    'version': '9.0.1.1',
+    'version': '9.0.1.2',
     'depends': [
         'report',
         'project',
