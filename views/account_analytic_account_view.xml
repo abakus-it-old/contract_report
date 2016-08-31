@@ -7,7 +7,7 @@
             <field name="inherit_id" ref="account_analytic_account_improvements.sale_subscription_contract_improvements"/>
             <field name="arch" type="xml">
                 <xpath expr="//group[@id='invoicing_support_contract']" position="after">
-                    <group string="Service Report" id="contract_report">
+                    <group string="Service Report" id="contract_report" attrs="{'invisible':[('contract_type', 'NOT LIKE', 'BL')]}">
                     	<field name="report_partner_id" />
                         <button name="print_timesheets_report" type="object" string="Print"/>
                         <button name="action_service_report_sent" type="object" string="Send by Email"/>
